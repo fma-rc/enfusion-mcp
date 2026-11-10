@@ -1,0 +1,27 @@
+{
+  "id": "rank_persistence",
+  "name": "XP / Rank Persistence",
+  "description": "Save and restore player ranks across server restarts via $profile files.",
+  "category": "Persistence",
+  "helperClasses": [
+    "class PersistentRank_Util\n{\n    // Hierarchical sharding avoids large flat directories\n    static string GetDirectory(string identity)\n    {\n        return \"$profile:PersistentRank/\"\n            + identity.Substring(0, 2) + \"/\"\n            + identity.Substring(2, 2) + \"/\";\n    }\n\n    static void SaveRank(int playerId, SCR_ECharacterRank rank)\n    {\n        string identity;\n        BackendApi.GetPlayerIdentityId(playerId, identity);\n        string dir = GetDirectory(identity);\n        FileIO.MakeDirectory(dir);\n        FileHandle file = FileIO.OpenFile(dir + identity, FileMode.WRITE);\n        file.WriteLine(typename.EnumToString(SCR_ECharacterRank, rank));\n        file.Close();\n    }\n\n    static bool LoadRank(int playerId, out SCR_ECharacterRank rank)\n    {\n        string identity;\n        BackendApi.GetPlayerIdentityId(playerId, identity);\n        string path = GetDirectory(identity) + identity;\n        FileHandle file = FileIO.OpenFile(path, FileMode.READ);\n        if (!file) return false;\n        string data;\n        file.ReadLine(data);\n        file.Close();\n        rank = typename.StringToEnum(SCR_ECharacterRank, data);\n        return true;\n    }\n\n    static void ApplyPlayerRank(int playerId, SCR_ECharacterRank rank)\n    {\n        SCR_XPHandlerComponent xpComp = SCR_XPHandlerComponent.Cast(\n            GetGame().GetGameMode().FindComponent(SCR_XPHandlerComponent));\n        if (!xpComp) return;\n        SCR_CampaignFactionManager factionMgr = SCR_CampaignFactionManager.Cast(\n            GetGame().GetGameMode().FindComponent(SCR_CampaignFactionManager));\n        if (!factionMgr) return;\n        int current = xpComp.GetXP(playerId);\n        int required = factionMgr.GetRequiredRankXP(rank);\n        int gap = required - current;\n        if (gap > 0)\n            xpComp.AwardXP(playerId, SCR_EXPRewards.UNDEFINED, 1, false, gap);\n    }\n}"
+  ],
+  "overrides": [
+    {
+      "signature": "void OnPlayerAuditSuccess(int playerId)",
+      "superCall": true,
+      "body": [
+        "SCR_ECharacterRank rank;",
+        "if (PersistentRank_Util.LoadRank(playerId, rank))",
+        "    GetGame().GetCallqueue().CallLater(PersistentRank_Util.ApplyPlayerRank, 5000, false, playerId, rank);"
+      ]
+    }
+  ],
+  "companionClasses": [
+    "// Save on rank change\nmodded class SCR_CharacterRankComponent\n{\n    override void OnPostInit(IEntity owner)\n    {\n        super.OnPostInit(owner);\n        s_OnRankChanged.Insert(OnRankChanged);\n    }\n\n    protected void OnRankChanged(SCR_ECharacterRank rank, int playerId)\n    {\n        PersistentRank_Util.SaveRank(playerId, rank);\n    }\n}"
+  ],
+  "notes": [
+    "Verify BackendApi.GetPlayerIdentityId and s_OnRankChanged exist in your game version",
+    "Ranks are stored under $profile:PersistentRank/ — back this up with your save rotation"
+  ]
+}

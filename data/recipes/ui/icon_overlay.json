@@ -1,0 +1,40 @@
+{
+  "id": "icon_overlay",
+  "name": "Icon Overlay",
+  "description": "Screen-edge status icon (right-center), starts hidden (Opacity 0), additive blend. Fade in/out from script (earplugs/suppression style).",
+  "category": "hud",
+  "subdirectory": "UI/layouts/HUD",
+  "params": [
+    { "name": "texture", "description": "Icon texture resource ref", "default": "{00000000EARPLUG}Images/Icon.edds" },
+    { "name": "iconName", "description": "Widget name for FindAnyWidget lookups", "default": "StatusIcon" },
+    { "name": "size", "description": "Icon size in px (\"w h\")", "default": "50 50" }
+  ],
+  "tree": {
+    "type": "Frame",
+    "name": "rootFrame",
+    "children": [
+      {
+        "type": "Overlay",
+        "name": "IconOverlay",
+        "slot": { "anchor": "1 0.5 1 0.5", "offsetLeft": -60, "offsetTop": -25, "offsetRight": -10, "offsetBottom": 25 },
+        "children": [
+          {
+            "type": "Image",
+            "name": "{{iconName}}",
+            "slot": { "horizontalAlign": 3, "verticalAlign": 3 },
+            "props": {
+              "Opacity": "0",
+              "Texture": "{{texture}}",
+              "Size": "{{size}}",
+              "Blend Mode": "Additive"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "postCreateNotes": [
+    "Fade the icon via ImageWidget.Cast(FindAnyWidget('{{iconName}}')).SetOpacity(...)",
+    "Additive blend makes it glow; use a normal blend for a solid icon"
+  ]
+}

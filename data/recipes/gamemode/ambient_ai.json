@@ -1,0 +1,18 @@
+{
+  "id": "ambient_ai",
+  "name": "Ambient AI Battle Zones",
+  "description": "Enable AI-vs-AI battles in dead areas of the map, disabled above a player threshold.",
+  "category": "AI",
+  "attributes": [
+    "[Attribute(\"0\", UIWidgets.CheckBox, \"Enable ambient AI battles\", category: \"AI\")]\nprotected bool m_bEnableAmbientAIBattles;",
+    "[Attribute(\"32\", UIWidgets.Slider, \"Disable AI battles above X players\", \"1 128 1\", category: \"AI\")]\nprotected int m_iAmbientAIBattlePlayerThreshold;"
+  ],
+  "getters": [
+    "bool GetEnableAmbientAIBattles() { return m_bEnableAmbientAIBattles; }",
+    "int GetAmbientAIBattlePlayerThreshold() { return m_iAmbientAIBattlePlayerThreshold; }"
+  ],
+  "notes": [
+    "Add an AmbientAIZone.layer with AI zone entities",
+    "Enable/disable the zones based on the live player count vs threshold"
+  ]
+}

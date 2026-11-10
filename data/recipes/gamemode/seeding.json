@@ -1,0 +1,20 @@
+{
+  "id": "seeding",
+  "name": "Server Seeding Mode",
+  "description": "Restrict players to the MOB area until enough players connect (one-way exit).",
+  "category": "Seeding",
+  "attributes": [
+    "[Attribute(\"0\", UIWidgets.CheckBox, \"Enable server seeding mode\", category: \"Seeding\")]\nprotected bool m_bServerSeedingEnabled;",
+    "[Attribute(\"0\", UIWidgets.EditBox, \"Players needed to exit seeding (0=disabled)\", \"0 128 1\", category: \"Seeding\")]\nprotected int m_iServerSeedingThreshold;"
+  ],
+  "getters": [
+    "bool GetIsServerSeedingEnabled() { return m_bServerSeedingEnabled; }",
+    "int GetServerPlayerThreshold() { return m_iServerSeedingThreshold; }"
+  ],
+  "notes": [
+    "Add IRON_SeedingRestrictionZoneEntity child on each MOB with m_bAutoSizeToHQ 1",
+    "Add SCR_CampaignSpawnPointGroup with m_bOnlyShowDuringSeeding 1 near MOBs",
+    "Add seeding patrols in AmbientPatrols_SEEDING.layer",
+    "Drive state with an Iron_SeedingSystemManager: seeding=true on init, flip to false once threshold crossed (permanent)"
+  ]
+}

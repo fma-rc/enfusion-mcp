@@ -1,0 +1,47 @@
+{
+  "id": "progress_hud",
+  "name": "Progress HUD",
+  "description": "Bottom-center objective bar: a label above a horizontal ProgressBar (capture/seize style).",
+  "category": "hud",
+  "subdirectory": "UI/layouts/HUD",
+  "params": [
+    { "name": "label", "description": "Objective label", "default": "<b>CAPTURING</b>" },
+    { "name": "color", "description": "Bar color RGBA (0-1)", "default": "0.761 0.392 0.078 0.824" }
+  ],
+  "tree": {
+    "type": "Frame",
+    "name": "rootFrame",
+    "children": [
+      {
+        "type": "VerticalLayout",
+        "name": "ObjectiveStack",
+        "slot": { "anchor": "0.5 1 0.5 1", "offsetLeft": -200, "offsetTop": -120, "offsetRight": 200, "offsetBottom": -70 },
+        "children": [
+          {
+            "type": "RichText",
+            "name": "ObjectiveLabel",
+            "slot": {},
+            "props": { "Text": "{{label}}", "Font Size": "22", "Min Font Size": "22", "Horizontal Alignment": "Center" },
+            "font": { "font": "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt" }
+          },
+          {
+            "type": "ProgressBar",
+            "name": "Progress",
+            "slot": { "padding": "0 6 0 0", "sizeToContent": false },
+            "props": {
+              "Color": "{{color}}",
+              "style": "SimpleWithBackground",
+              "Maximum": "1",
+              "Current": "0",
+              "Draw Background": "1"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "postCreateNotes": [
+    "Set progress via SCR_WLibProgressBarComponent or ProgressBarWidget.Cast(FindAnyWidget('Progress')).SetCurrent(0..1)",
+    "Toggle rootFrame visibility while the player is inside the capture zone"
+  ]
+}

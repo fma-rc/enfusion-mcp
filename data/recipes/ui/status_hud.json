@@ -1,0 +1,41 @@
+{
+  "id": "status_hud",
+  "name": "Status HUD",
+  "description": "Top-center status text line, e.g. a seeding/state banner. Toggle/update at runtime via FindAnyWidget('StatusText').",
+  "category": "hud",
+  "subdirectory": "UI/layouts/HUD",
+  "params": [
+    { "name": "text", "description": "Initial status text (RichText markup allowed)", "default": "<b>Status</b>" },
+    { "name": "fontSize", "description": "Font size", "default": "36" }
+  ],
+  "tree": {
+    "type": "Frame",
+    "name": "rootFrame",
+    "children": [
+      {
+        "type": "VerticalLayout",
+        "name": "StatusStack",
+        "slot": { "anchor": "0.5 0 0.5 0", "offsetLeft": -480, "offsetTop": 20, "offsetRight": 480, "offsetBottom": 90 },
+        "children": [
+          {
+            "type": "RichText",
+            "name": "StatusText",
+            "slot": {},
+            "props": {
+              "Text": "{{text}}",
+              "Font Size": "{{fontSize}}",
+              "Min Font Size": "{{fontSize}}",
+              "Horizontal Alignment": "Center",
+              "Vertical Alignment": "Center"
+            },
+            "font": { "font": "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt", "shadowSize": 5 }
+          }
+        ]
+      }
+    ]
+  },
+  "postCreateNotes": [
+    "Attach a SCR_InfoDisplay-derived script (or a custom HUD component) to drive visibility",
+    "Update the text at runtime via RichTextWidget.Cast(FindAnyWidget('StatusText')).SetText(...)"
+  ]
+}

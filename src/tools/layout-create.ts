@@ -5,28 +5,93 @@ import { resolve, join } from "node:path";
 import type { Config } from "../config.js";
 import {
   generateLayout,
+  generateLayoutTree,
   getLayoutSubdirectory,
   getLayoutFilename,
   type LayoutType,
   type WidgetDef,
+  type WidgetNode,
 } from "../templates/layout.js";
 import { validateFilename } from "../utils/safe-path.js";
+
+// Recursive widget-tree schema for the parent-aware layout API.
+type WidgetNodeInput = {
+  type: string;
+  name: string;
+  slot?: Record<string, unknown>;
+  props?: Record<string, string>;
+  font?: { font: string; shadowSize?: number; shadowColor?: string };
+  children?: WidgetNodeInput[];
+};
+
+const slotSchema = z
+  .object({
+    anchor: z.string().optional(),
+    positionX: z.number().optional(),
+    positionY: z.number().optional(),
+    sizeX: z.number().optional(),
+    sizeY: z.number().optional(),
+    offsetLeft: z.number().optional(),
+    offsetTop: z.number().optional(),
+    offsetRight: z.number().optional(),
+    offsetBottom: z.number().optional(),
+    padding: z.string().optional(),
+    horizontalAlign: z.union([z.string(), z.number()]).optional(),
+    verticalAlign: z.union([z.string(), z.number()]).optional(),
+    sizeMode: z.string().optional(),
+    fillWeight: z.number().optional(),
+    sizeToContent: z.union([z.boolean(), z.string()]).optional(),
+  })
+  .describe(
+    "Slot properties. Which keys apply depends on the parent widget: Frame uses anchor/position/size/offset; layout widgets use padding/sizeMode/fillWeight; Overlay/Scale use horizontalAlign/verticalAlign/padding."
+  );
+
+const widgetNodeSchema: z.ZodType<WidgetNodeInput> = z.lazy(() =>
+  z.object({
+    type: z
+      .string()
+      .describe(
+        "Friendly alias (Frame, VerticalLayout, HorizontalLayout, SizeLayout, Overlay, Scale, ScrollLayout, Text, RichText, Image, ProgressBar, Button) or a raw *WidgetClass name."
+      ),
+    name: z.string().describe("Widget Name for FindAnyWidget() lookups."),
+    slot: slotSchema.optional(),
+    props: z
+      .record(z.string())
+      .optional()
+      .describe('Raw widget properties (Text, Opacity, Color, Texture, "Blend Mode", Current, Maximum, ...).'),
+    font: z
+      .object({
+        font: z.string().describe('Font resource ref, e.g. "{GUID}UI/Fonts/.../X.fnt"'),
+        shadowSize: z.number().optional(),
+        shadowColor: z.string().optional(),
+      })
+      .optional()
+      .describe("Expands to a FontProperties sub-node."),
+    children: z.array(widgetNodeSchema).optional().describe("Nested child widgets."),
+  })
+);
 
 export function registerLayoutCreate(server: McpServer, config: Config): void {
   server.registerTool(
     "layout_create",
     {
       description:
-        "Create a UI layout (.layout) file for an Arma Reforger mod. Generates a properly structured layout with widgets in valid Enfusion text serialization format. Use for HUD elements, menus, dialogs, and custom UI.",
+        "Create a UI layout (.layout) file for an Arma Reforger mod. Generates a properly structured layout in valid Enfusion text serialization format (correct parent-inferred Slot types, anonymous child blocks, FontProperties). Use for HUD elements, menus, dialogs, and custom UI. Provide `root` for a full nested widget tree (recommended for real HUDs), or use `layoutType` + `widgets` for the quick flat templates.",
       inputSchema: {
         name: z
           .string()
           .min(1)
           .describe("Layout name (e.g., 'HealthDisplay', 'ScoreboardMenu')"),
+        root: widgetNodeSchema
+          .optional()
+          .describe(
+            "Full widget tree (root widget with nested children). When provided, takes precedence over layoutType/widgets. The root carries no slot; every descendant's Slot type is inferred from its parent widget class."
+          ),
         layoutType: z
           .enum(["hud", "menu", "dialog", "list", "custom"])
+          .optional()
           .describe(
-            "Layout template type. 'hud' creates a bottom-left HUD element. 'menu' creates a centered menu panel. 'dialog' creates a centered confirmation dialog. 'list' creates a left-side list panel. 'custom' creates a blank full-screen frame."
+            "Flat template type (used when `root` is omitted). 'hud' bottom-left element. 'menu' centered panel. 'dialog' centered confirmation. 'list' left-side panel. 'custom' blank full-screen frame."
           ),
         rootWidgetType: z
           .string()
@@ -85,21 +150,23 @@ export function registerLayoutCreate(server: McpServer, config: Config): void {
           .describe("Addon root path. Uses configured default if omitted."),
       },
     },
-    async ({ name, layoutType, rootWidgetType, anchor, offset, widgets, description, projectPath }) => {
+    async ({ name, root, layoutType, rootWidgetType, anchor, offset, widgets, description, projectPath }) => {
       const basePath = projectPath || config.projectPath;
 
       try {
         validateFilename(name);
 
-        const content = generateLayout({
-          name,
-          layoutType: layoutType as LayoutType,
-          rootWidgetType,
-          anchor,
-          offset,
-          widgets: widgets as WidgetDef[] | undefined,
-          description,
-        });
+        const content = root
+          ? generateLayoutTree(root as WidgetNode, description)
+          : generateLayout({
+              name,
+              layoutType: (layoutType ?? "custom") as LayoutType,
+              rootWidgetType,
+              anchor,
+              offset,
+              widgets: widgets as WidgetDef[] | undefined,
+              description,
+            });
 
         if (basePath) {
           const subdir = getLayoutSubdirectory();

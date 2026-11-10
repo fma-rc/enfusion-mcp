@@ -1,0 +1,22 @@
+{
+  "id": "auto_load_save",
+  "name": "Auto-Load Latest Save",
+  "description": "Automatically resume from the most recent save when the server restarts (PvE).",
+  "category": "SaveLoad",
+  "methods": [
+    "protected void LoadLatestSave()\n{\n    SCR_SaveGameManager saveMgr = SCR_SaveGameManager.GetInstance();\n    if (!saveMgr) return;\n    array<string> saves = {};\n    saveMgr.GetAvailableSaves(saves);\n    if (!saves.IsEmpty())\n        saveMgr.Load(saves[saves.Count() - 1]);\n}"
+  ],
+  "overrides": [
+    {
+      "signature": "void OnGameModeStart()",
+      "superCall": true,
+      "body": [
+        "if (Replication.IsServer())",
+        "    GetGame().GetCallqueue().CallLater(LoadLatestSave, 3000, false);"
+      ]
+    }
+  ],
+  "notes": [
+    "Confirm SCR_SaveGameManager API names against your game version before shipping"
+  ]
+}

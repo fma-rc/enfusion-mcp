@@ -3,7 +3,39 @@
 Maintained private fork of [steffenbk/enfusion-mcp-BK](https://github.com/steffenbk/enfusion-mcp-BK)
 (itself a fork of Articulated7/enfusion-mcp). Versioning: [SemVer](https://semver.org/).
 
+## [1.1.0-ff]
+
+Merged upstream enfusion-mcp-BK through 0acfa88 (v0.12.0 + 37 later commits).
+
+### Added
+- UI layout engine rewrite, plus UI recipe and game mode recipe systems (`layout_recipe`,
+  `gamemode_scaffold`, `menu_create`).
+- `wb_read_props` tool and `EMCP_WB_ReadProps` handler (engine-side resolved properties).
+- Vehicle engine tuning server (`npm run tuning-server`).
+- Scenario relay towers and a low-population seeding mode; prefab component-dependency warnings.
+- Bulk Workbench handler cleanup and `listInstalledHandlerMods()`.
+
+### Fixed (from upstream)
+- Pak reader: entries read at their absolute offset, zlib (not raw deflate) decompression,
+  clear message for unsupported compression.
+- enfusion-text parser: numeric tuples (`coords 0 0 0`) no longer truncated, and a bare
+  key/value pair followed by a quoted key no longer replays a token.
+- Workbench in-band handler errors are thrown instead of reported as success; a handler class
+  that is new since Workbench started now gives an explanatory error.
+- Windows path hazards closed, KB output capped, project reads and building writes guarded.
+- `gamePath` derivation accepts `ENFUSION_WORKBENCH_PATH` pointing at either the Tools root or
+  its `Workbench` subdirectory. Combined with the fork's rule that an explicit `gamePath` in a
+  config file is never overwritten.
+
+### Kept from the fork
+- Linux/Proton launcher and kill logic, the 1.8 API index and scraper, package metadata.
+  `findWorkbenchExe` now comes from `utils/game-paths` (upstream's move); the Linux launcher
+  code in `workbench/client.ts` is unchanged.
+- `tests/animation/integration-m151a2.test.ts` still needs a local Windows sample directory
+  and fails to load without it (unchanged since the vendoring).
+
 ## [Unreleased]
+
 
 ### Changed
 - **Reforger 1.8 API index re-scraped** (Tools buildid 24870687, 1.8.0.13): 887 Enfusion +

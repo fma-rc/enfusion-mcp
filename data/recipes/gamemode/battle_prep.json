@@ -1,0 +1,31 @@
+{
+  "id": "battle_prep",
+  "name": "Battle Prep Timer",
+  "description": "Warmup countdown before combat; teams locked to main base until it ends.",
+  "category": "Battle Prep",
+  "attributes": [
+    "[Attribute(\"0\", UIWidgets.CheckBox, \"Show battle prep timer\", category: \"Battle Prep\")]\nprotected bool m_bShowBattlePrepTimer;",
+    "[Attribute(\"600\", UIWidgets.Slider, \"Battle prep duration (s)\", \"1 1800 1\", category: \"Battle Prep\")]\nprotected int m_iBattlePrepTimeS;"
+  ],
+  "getters": [
+    "bool ShowBattlePrepTimer() { return m_bShowBattlePrepTimer; }",
+    "float GetBattlePrepTime() { return m_iBattlePrepTimeS; }"
+  ],
+  "methods": [
+    "protected void EndBattlePrep()\n{\n    // Unlock spawning, enable base seizing, etc.\n    SetBattlePrepEnded(true);\n}"
+  ],
+  "overrides": [
+    {
+      "signature": "void OnGameModeStart()",
+      "superCall": true,
+      "body": [
+        "if (m_bShowBattlePrepTimer && Replication.IsServer())",
+        "    GetGame().GetCallqueue().CallLater(EndBattlePrep, m_iBattlePrepTimeS * 1000, false);"
+      ]
+    }
+  ],
+  "notes": [
+    "Add a BattlePrepTimerHUD.layout (see layout_recipe timer_hud) and drive it from the timer",
+    "Implement SetBattlePrepEnded() to unlock spawning / enable seizing"
+  ]
+}

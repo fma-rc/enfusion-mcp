@@ -1,0 +1,53 @@
+{
+  "id": "info_panel",
+  "name": "Info Panel",
+  "description": "Bottom-left translucent panel with a title and two info lines. General-purpose HUD readout.",
+  "category": "panel",
+  "subdirectory": "UI/layouts/HUD",
+  "params": [
+    { "name": "title", "description": "Panel title", "default": "INFO" },
+    { "name": "line1", "description": "First info line", "default": "Line 1" },
+    { "name": "line2", "description": "Second info line", "default": "Line 2" }
+  ],
+  "tree": {
+    "type": "Frame",
+    "name": "rootFrame",
+    "children": [
+      {
+        "type": "Frame",
+        "name": "Panel",
+        "slot": { "anchor": "0 1 0 1", "offsetLeft": 20, "offsetTop": -150, "offsetRight": 260, "offsetBottom": -20 },
+        "children": [
+          {
+            "type": "Image",
+            "name": "Background",
+            "slot": { "anchor": "0 0 1 1" },
+            "props": { "Color": "0 0 0 0.588" }
+          },
+          {
+            "type": "Text",
+            "name": "Title",
+            "slot": { "anchor": "0 0 1 0", "offsetLeft": 8, "offsetTop": 6, "offsetRight": -8, "offsetBottom": 30 },
+            "props": { "Text": "{{title}}", "ExactFontSize": "18" }
+          },
+          {
+            "type": "Text",
+            "name": "Line1",
+            "slot": { "anchor": "0 0 1 0", "offsetLeft": 8, "offsetTop": 36, "offsetRight": -8, "offsetBottom": 58 },
+            "props": { "Text": "{{line1}}", "ExactFontSize": "14" }
+          },
+          {
+            "type": "Text",
+            "name": "Line2",
+            "slot": { "anchor": "0 0 1 0", "offsetLeft": 8, "offsetTop": 60, "offsetRight": -8, "offsetBottom": 82 },
+            "props": { "Text": "{{line2}}", "ExactFontSize": "14" }
+          }
+        ]
+      }
+    ]
+  },
+  "postCreateNotes": [
+    "Update lines via TextWidget.Cast(FindAnyWidget('Line1')).SetText(...)",
+    "Adjust the Panel slot offsets to resize/reposition"
+  ]
+}

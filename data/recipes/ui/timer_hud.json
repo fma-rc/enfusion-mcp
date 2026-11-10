@@ -1,0 +1,43 @@
+{
+  "id": "timer_hud",
+  "name": "Timer HUD",
+  "description": "Centered countdown/timer with a small label above the number (battle-prep style).",
+  "category": "hud",
+  "subdirectory": "UI/layouts/HUD",
+  "params": [
+    { "name": "label", "description": "Small label above the timer", "default": "BATTLE PREPARATION" },
+    { "name": "time", "description": "Initial timer text", "default": "05:00" },
+    { "name": "fontSize", "description": "Timer font size", "default": "48" }
+  ],
+  "tree": {
+    "type": "Frame",
+    "name": "rootFrame",
+    "children": [
+      {
+        "type": "VerticalLayout",
+        "name": "TimerStack",
+        "slot": { "anchor": "0.5 0.5 0.5 0.5", "offsetLeft": -250, "offsetTop": -80, "offsetRight": 250, "offsetBottom": 80 },
+        "children": [
+          {
+            "type": "RichText",
+            "name": "TimerLabel",
+            "slot": {},
+            "props": { "Text": "{{label}}", "Font Size": "20", "Min Font Size": "20", "Horizontal Alignment": "Center" },
+            "font": { "font": "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt" }
+          },
+          {
+            "type": "RichText",
+            "name": "TimerText",
+            "slot": { "padding": "0 4 0 0" },
+            "props": { "Text": "{{time}}", "Font Size": "{{fontSize}}", "Min Font Size": "{{fontSize}}", "Horizontal Alignment": "Center" },
+            "font": { "font": "{EABA4FE9D014CCEF}UI/Fonts/RobotoCondensed/RobotoCondensed_Bold.fnt", "shadowSize": 6 }
+          }
+        ]
+      }
+    ]
+  },
+  "postCreateNotes": [
+    "Drive TimerText each frame/second from your game-mode timer",
+    "Hide the whole layout by setting rootFrame visibility when the phase ends"
+  ]
+}

@@ -91,10 +91,11 @@ describe("requireEditMode", () => {
     if (mock) await mock.close();
   });
 
-  it("blocks when mode is unknown (caller must confirm via wb_state)", () => {
+  it("returns warning when mode is unknown", () => {
     client = new WorkbenchClient("127.0.0.1", 1);
     const result = requireEditMode(client, "create entity");
     expect(result).not.toBeNull();
+    expect(result).toContain("unknown");
     expect(result).toContain("wb_state");
   });
 
@@ -124,10 +125,11 @@ describe("requirePlayMode", () => {
     if (mock) await mock.close();
   });
 
-  it("blocks when mode is unknown (caller must confirm via wb_state)", () => {
+  it("returns warning when mode is unknown", () => {
     client = new WorkbenchClient("127.0.0.1", 1);
     const result = requirePlayMode(client, "stop");
     expect(result).not.toBeNull();
+    expect(result).toContain("unknown");
     expect(result).toContain("wb_state");
   });
 

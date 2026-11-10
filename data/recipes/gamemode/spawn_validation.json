@@ -1,0 +1,30 @@
+{
+  "id": "spawn_validation",
+  "name": "Player Spawn Validation",
+  "description": "Gate spawning with custom conditions (radio coverage, supplies).",
+  "category": "Respawn",
+  "overrides": [
+    {
+      "signature": "bool CanPlayerSpawn_S(int playerId)",
+      "superCall": false,
+      "body": [
+        "if (!super.CanPlayerSpawn_S(playerId)) return false;",
+        "",
+        "SCR_CampaignMilitaryBaseComponent base = GetSelectedBase(playerId);",
+        "if (base)",
+        "{",
+        "    Faction faction = GetPlayerFaction(playerId);",
+        "    if (base.IsHQRadioTrafficPossible(faction) == SCR_ERadioCoverageStatus.NONE)",
+        "        return false;",
+        "",
+        "    if (base.GetSupplyLimit() > 0 && base.GetScarcityLevel() <= 0)",
+        "        return false;",
+        "}",
+        "return true;"
+      ]
+    }
+  ],
+  "notes": [
+    "GetSelectedBase / GetPlayerFaction are illustrative — wire them to your base/faction lookups"
+  ]
+}

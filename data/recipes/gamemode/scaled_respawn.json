@@ -1,0 +1,22 @@
+{
+  "id": "scaled_respawn",
+  "name": "Scaled Respawn Timer",
+  "description": "Increase respawn penalty per death, scaled by rank, with a cooldown.",
+  "category": "Respawn",
+  "attributes": [
+    "[Attribute(\"1\", UIWidgets.CheckBox, \"Scale respawn timer by rank\", category: \"Respawn\")]\nprotected bool m_bScaleRespawnTimer;",
+    "[Attribute(\"5\", UIWidgets.EditBox, \"Respawn penalty per death (s)\", \"0 120 1\", category: \"Respawn\")]\nprotected int m_iRespawnPenalty;",
+    "[Attribute(\"90\", UIWidgets.EditBox, \"Max respawn penalty (s)\", \"0 300 1\", category: \"Respawn\")]\nprotected int m_iMaxRespawnPenalty;",
+    "[Attribute(\"1200\", UIWidgets.EditBox, \"Penalty cooldown (s)\", \"0 3600 1\", category: \"Respawn\")]\nprotected int m_iRespawnPenaltyCooldown;"
+  ],
+  "getters": [
+    "bool GetScaleRespawnTimer() { return m_bScaleRespawnTimer; }",
+    "int GetRespawnPenalty() { return m_iRespawnPenalty; }",
+    "int GetMaxRespawnPenalty() { return m_iMaxRespawnPenalty; }",
+    "int GetRespawnPenaltyCooldown() { return m_iRespawnPenaltyCooldown; }"
+  ],
+  "notes": [
+    "Apply the penalty in a modded SCR_WaveRespawnTimerComponent or via the respawn system",
+    "Track per-player death counts and decay them after the cooldown window"
+  ]
+}
