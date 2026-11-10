@@ -38,6 +38,23 @@
     ]
   },
   {
+    "name": "Camera",
+    "description": "",
+    "classes": [
+      "CameraCollisionSolver",
+      "CameraCollisionSolverResult",
+      "CameraCollisionSolverSimple",
+      "CameraComponent",
+      "CameraSystem",
+      "CameraComponentClass",
+      "CameraController",
+      "CameraControllerContext",
+      "CameraControllerResult",
+      "GenericCameraEntityClass",
+      "GenericCameraEntity"
+    ]
+  },
+  {
     "name": "Character",
     "description": "",
     "classes": []
@@ -169,8 +186,6 @@
       "DialogueTransitionRule",
       "DialogueVariableMappingObject",
       "DialogueVariableRule",
-      "DynamicAudioDialogueData",
-      "ObsoleteSentenceDialogueData",
       "SentenceDialogueData",
       "SetVariableDialogueData",
       "TextDialogueData",
@@ -539,6 +554,15 @@
     ]
   },
   {
+    "name": "System_Time",
+    "description": "",
+    "classes": [
+      "DateTimeView",
+      "Duration",
+      "Timestamp"
+    ]
+  },
+  {
     "name": "Tools",
     "description": "Helpful functions & classes.",
     "classes": [
@@ -668,6 +692,7 @@
       "WidgetType",
       "CanvasWidgetCommand",
       "TextDrawCommand",
+      "CurvedTextDrawCommand",
       "LineDrawCommand",
       "PolygonDrawCommand",
       "TriMeshDrawCommand",
@@ -719,7 +744,6 @@
       "BehaviorEditor",
       "DialogueEditor",
       "LocalizationEditor",
-      "NavmeshGeneratorMain",
       "ParticleEditor",
       "ProcAnimEditor",
       "ResourceManager",
@@ -738,19 +762,6 @@
       "WorldEditorPlugin",
       "WorldEditorTool",
       "World"
-    ]
-  },
-  {
-    "name": "WorkbenchAPI_Terrain",
-    "description": "",
-    "classes": [
-      "TerrainToolDesc",
-      "TerrainToolDesc_HeightAdd",
-      "TerrainToolDesc_HeightExact",
-      "TerrainToolDesc_HeightNoise",
-      "TerrainToolDesc_HeightSmooth",
-      "TerrainToolDesc_HeightUser",
-      "TerrainToolDesc_LayerAdd"
     ]
   },
   {
@@ -818,6 +829,7 @@
       "BackendValueFilter",
       "BanListPageParams",
       "JsonApiStruct",
+      "BanList",
       "BanServiceApi",
       "BaseWorkshopItem",
       "BlockListItem",
@@ -861,6 +873,41 @@
     ]
   },
   {
+    "name": "Online_UserSessionData",
+    "description": "",
+    "classes": [
+      "UserSessionApi",
+      "UserSessionData"
+    ]
+  },
+  {
+    "name": "Online_bans",
+    "description": "",
+    "classes": [
+      "BanEntry",
+      "BanIssuerBase",
+      "BanIssuerPublisher",
+      "BanIssuerServer",
+      "BanIssuerUnknown",
+      "BanIssuerUser",
+      "BanList",
+      "BanRemoveResult",
+      "BanRemoveResultItem",
+      "BanScope",
+      "BanTargetBase",
+      "BanTargetGroup",
+      "BanTargetServer",
+      "BanTargetUnknown",
+      "BanTargetUser",
+      "ServerBanEntryCatalogue",
+      "ServerBanEntryCatalogueFilter",
+      "ServerBanManagerApi",
+      "ServerBanManifest",
+      "UserBanManagerApi",
+      "System"
+    ]
+  },
+  {
     "name": "Online_bimage",
     "description": "",
     "classes": [
@@ -872,6 +919,7 @@
     "description": "",
     "classes": [
       "ExtraProduct",
+      "OfferLabel",
       "ProductOffer",
       "ProductOfferCatalogueApi",
       "ProductOfferCatalogueFilters",
@@ -892,6 +940,10 @@
       "GroupCatalogue",
       "GroupCatalogueFilters",
       "GroupData",
+      "GroupEvent",
+      "GroupEventCatalogue",
+      "GroupEventCatalogueFilters",
+      "GroupEventManifest",
       "GroupManifest",
       "GroupMemberCatalogue",
       "GroupMemberCatalogueFilters",
@@ -919,6 +971,8 @@
       "ServerJoinManagerApi",
       "ServerLobbyApi",
       "ServerPingSite",
+      "ServerPlayerGameDataBase",
+      "ServerPlayerInfo",
       "ServerQueueData",
       "ServerQueueInfo",
       "ServerWorkshopData"
@@ -1510,6 +1564,7 @@
       "ChimeraWorldBase",
       "GameMaterial",
       "HitEffectInfo",
+      "ParticleContactComponentClass",
       "ParticleEffectInfo",
       "PrefabListClass",
       "PrefabList",
@@ -1521,6 +1576,13 @@
     "description": "",
     "classes": [
       "AnimationIKTargetInfo"
+    ]
+  },
+  {
+    "name": "DLC",
+    "description": "",
+    "classes": [
+      "DlcManager"
     ]
   },
   {
@@ -2062,6 +2124,7 @@
       "GadgetGamepadEffectsManagerComponentClass",
       "GadgetGamepadEffectsManagerComponent",
       "GamepadEffect",
+      "GamepadEffectCollection",
       "GamepadEffectsManagerComponent",
       "GamepadEffectsManagerComponentClass",
       "GamepadIOHandlerComponentClass",
@@ -2070,6 +2133,10 @@
       "GamepadRumbleEffect",
       "GamepadTriggerEffect",
       "GamepadVibrationEffect",
+      "JoystickCommonEffect",
+      "JoystickConditionEffect",
+      "JoystickForceEffect",
+      "JoystickPeriodicEffect",
       "VehicleGamepadEffectsManagerComponent",
       "VehicleGamepadEffectsManagerComponentClass",
       "WeaponGamepadEffectsManagerComponent"
@@ -2136,6 +2203,11 @@
       "SoundIdentity",
       "VisualIdentity"
     ]
+  },
+  {
+    "name": "Inventory",
+    "description": "",
+    "classes": []
   },
   {
     "name": "InventorySystem",
@@ -2640,6 +2712,8 @@
       "PerceptionSystem",
       "ProcAnimSystem",
       "ProjectileSimulationSystem",
+      "RadioSpatialSystem",
+      "RadioManagerEntity",
       "RecordInactivePhysEntitiesStateSystem",
       "ReplicatedCamerasSystem",
       "RespawnSystem",
@@ -2650,6 +2724,7 @@
       "StaminaSystem",
       "TagSystem",
       "VehicleDebugDrawSystem",
+      "VehicleDustSystem",
       "VehicleLightPortalSystem",
       "VehiclePostSimulationSystem",
       "VehicleSimulationSystem",
@@ -2866,6 +2941,16 @@
       "VehicleWheeledSimulation_SA_BClass",
       "VehicleWheeledSimulationClass",
       "VehicleWheelSound"
+    ]
+  },
+  {
+    "name": "Vehicles",
+    "description": "",
+    "classes": [
+      "ParticleContactComponent",
+      "VehicleWheelEffectComponent",
+      "VehicleWheelEffectComponentClass",
+      "WheelSlotInfo"
     ]
   },
   {

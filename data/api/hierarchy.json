@@ -56,6 +56,10 @@
     "children": []
   },
   {
+    "name": "AnimationProfileCollector",
+    "children": []
+  },
+  {
     "name": "AssetTypes",
     "children": []
   },
@@ -120,10 +124,6 @@
     "children": []
   },
   {
-    "name": "BlenderPathContainer",
-    "children": []
-  },
-  {
     "name": "BlenderRestAPI",
     "children": []
   },
@@ -137,6 +137,18 @@
   },
   {
     "name": "BoundingVolumeScr",
+    "children": []
+  },
+  {
+    "name": "CameraCollisionSolverResult",
+    "children": []
+  },
+  {
+    "name": "CameraControllerContext",
+    "children": []
+  },
+  {
+    "name": "CameraControllerResult",
     "children": []
   },
   {
@@ -192,10 +204,6 @@
     "children": []
   },
   {
-    "name": "EBT_HTTPRequest",
-    "children": []
-  },
-  {
     "name": "EBTContainerFields",
     "children": []
   },
@@ -234,6 +242,7 @@
       "BaseRplComponentClass",
       "BaseSoundComponentClass",
       "BaseStaticSoundComponentClass",
+      "CameraComponentClass",
       "PawnMovementComponentClass",
       "ScriptComponentClass",
       "SimpleSignalComponentClass",
@@ -293,6 +302,10 @@
   },
   {
     "name": "BaseStaticSoundComponentClass",
+    "children": []
+  },
+  {
+    "name": "CameraComponentClass",
     "children": []
   },
   {
@@ -453,6 +466,7 @@
       "BaseRplComponent",
       "BaseSoundComponent",
       "BaseStaticSoundComponent",
+      "CameraComponent",
       "PawnMovementComponent",
       "ScriptComponent",
       "SimpleSignalComponent",
@@ -512,6 +526,10 @@
   },
   {
     "name": "BaseStaticSoundComponent",
+    "children": []
+  },
+  {
+    "name": "CameraComponent",
     "children": []
   },
   {
@@ -595,6 +613,7 @@
       "EntityWithRplRpcClass",
       "FPS_AutotestClass",
       "GeneratorBaseEntityClass",
+      "GenericCameraEntityClass",
       "GenericControllerClass",
       "GenericTerrainEntityClass",
       "GenericWorldEntityClass",
@@ -617,7 +636,6 @@
       "RplExampleDebugShapeClass",
       "Screenshot_AutotestClass",
       "Screenshot_WaypointClass",
-      "ScriptCameraClass",
       "ShapeEntityClass",
       "SimpleCustomConcaveGeometryEntityClass",
       "SndWorldClass",
@@ -694,6 +712,16 @@
   },
   {
     "name": "SplineTerrainGeneratorEntityBaseClass",
+    "children": []
+  },
+  {
+    "name": "GenericCameraEntityClass",
+    "children": [
+      "ScriptCameraClass"
+    ]
+  },
+  {
+    "name": "ScriptCameraClass",
     "children": []
   },
   {
@@ -803,10 +831,6 @@
     "children": []
   },
   {
-    "name": "ScriptCameraClass",
-    "children": []
-  },
-  {
     "name": "ShapeEntityClass",
     "children": [
       "PolylineShapeEntityClass",
@@ -882,6 +906,10 @@
   },
   {
     "name": "GroupCatalogue",
+    "children": []
+  },
+  {
+    "name": "GroupEventCatalogue",
     "children": []
   },
   {
@@ -1003,6 +1031,13 @@
       "BackendCallback",
       "BackendCatalogueFilter",
       "BackendComment",
+      "BanEntry",
+      "BanIssuerBase",
+      "BanList",
+      "BanRemoveResult",
+      "BanRemoveResultItem",
+      "BanScope",
+      "BanTargetBase",
       "BaseContainerList",
       "BaseWorkshopItem",
       "BlockListItem",
@@ -1036,6 +1071,9 @@
       "GroupAuditLogMember",
       "GroupCatalogueFilters",
       "GroupData",
+      "GroupEvent",
+      "GroupEventCatalogueFilters",
+      "GroupEventManifest",
       "GroupManifest",
       "GroupMemberCatalogueFilters",
       "GroupMemberRole",
@@ -1048,6 +1086,7 @@
       "MissionWorkshopItem",
       "NotificationCatalogueFilters",
       "NotificationInfo",
+      "OfferLabel",
       "OnlineBanListData",
       "ParamEnum",
       "PhysicsGeomDef",
@@ -1074,9 +1113,11 @@
       "ScriptedWidgetEventHandler",
       "SearchResourcesFilter",
       "Serializer",
+      "ServerBanEntryCatalogue",
+      "ServerBanEntryCatalogueFilter",
+      "ServerBanManifest",
       "ServerPingSite",
       "Shape",
-      "TerrainToolDesc",
       "TestBase",
       "TestFailureBase",
       "TestHarness",
@@ -1085,6 +1126,7 @@
       "TrackDecalFactory",
       "Tuple",
       "UserGameDataBase",
+      "UserSessionData",
       "WBProgressDialog",
       "WB_UIMenuItem",
       "Widget",
@@ -1309,6 +1351,76 @@
     "children": []
   },
   {
+    "name": "BanEntry",
+    "children": []
+  },
+  {
+    "name": "BanIssuerBase",
+    "children": [
+      "BanIssuerPublisher",
+      "BanIssuerServer",
+      "BanIssuerUnknown",
+      "BanIssuerUser"
+    ]
+  },
+  {
+    "name": "BanIssuerPublisher",
+    "children": []
+  },
+  {
+    "name": "BanIssuerServer",
+    "children": []
+  },
+  {
+    "name": "BanIssuerUnknown",
+    "children": []
+  },
+  {
+    "name": "BanIssuerUser",
+    "children": []
+  },
+  {
+    "name": "BanList",
+    "children": []
+  },
+  {
+    "name": "BanRemoveResult",
+    "children": []
+  },
+  {
+    "name": "BanRemoveResultItem",
+    "children": []
+  },
+  {
+    "name": "BanScope",
+    "children": []
+  },
+  {
+    "name": "BanTargetBase",
+    "children": [
+      "BanTargetGroup",
+      "BanTargetServer",
+      "BanTargetUnknown",
+      "BanTargetUser"
+    ]
+  },
+  {
+    "name": "BanTargetGroup",
+    "children": []
+  },
+  {
+    "name": "BanTargetServer",
+    "children": []
+  },
+  {
+    "name": "BanTargetUnknown",
+    "children": []
+  },
+  {
+    "name": "BanTargetUser",
+    "children": []
+  },
+  {
     "name": "BaseContainerList",
     "children": []
   },
@@ -1344,6 +1456,7 @@
     "name": "CanvasWidgetCommand",
     "children": [
       "CompositeDrawCommand",
+      "CurvedTextDrawCommand",
       "ImageDrawCommand",
       "LineDrawCommand",
       "PolygonDrawCommand",
@@ -1353,6 +1466,10 @@
   },
   {
     "name": "CompositeDrawCommand",
+    "children": []
+  },
+  {
+    "name": "CurvedTextDrawCommand",
     "children": []
   },
   {
@@ -1527,6 +1644,18 @@
     "children": []
   },
   {
+    "name": "GroupEvent",
+    "children": []
+  },
+  {
+    "name": "GroupEventCatalogueFilters",
+    "children": []
+  },
+  {
+    "name": "GroupEventManifest",
+    "children": []
+  },
+  {
     "name": "GroupManifest",
     "children": []
   },
@@ -1563,6 +1692,7 @@
       "EntityWithRplRpc",
       "FPS_Autotest",
       "GeneratorBaseEntity",
+      "GenericCameraEntity",
       "GenericController",
       "GenericTerrainEntity",
       "GenericWorldEntity",
@@ -1585,7 +1715,6 @@
       "RplExampleDebugShape",
       "Screenshot_Autotest",
       "Screenshot_Waypoint",
-      "ScriptCamera",
       "ShapeEntity",
       "SimpleCustomConcaveGeometryEntity",
       "SndWorld",
@@ -1662,6 +1791,16 @@
   },
   {
     "name": "SplineTerrainGeneratorEntityBase",
+    "children": []
+  },
+  {
+    "name": "GenericCameraEntity",
+    "children": [
+      "ScriptCamera"
+    ]
+  },
+  {
+    "name": "ScriptCamera",
     "children": []
   },
   {
@@ -1771,10 +1910,6 @@
     "children": []
   },
   {
-    "name": "ScriptCamera",
-    "children": []
-  },
-  {
     "name": "ShapeEntity",
     "children": [
       "PolylineShapeEntity",
@@ -1855,8 +1990,11 @@
       "AnimExportProfilesResponse",
       "AnimExportTrackExportRequest",
       "AnimExportTrackExportResponse",
+      "AnimationExportProfileChannelInfo",
       "BakeInfoRequest",
       "BakeInfoResponse",
+      "BakeMLODResult",
+      "BakeXOBMlodRequest",
       "BanListPageParams",
       "BlenderOperatorDescription",
       "CheckGUIDRequest",
@@ -1868,10 +2006,11 @@
       "DynMaterialTemplate",
       "EBTAddonInfo",
       "EBTInfoRequest",
-      "EBT_HTTPErrorResponse",
       "ExampleRequest",
       "ExampleResponse",
       "ExportResult",
+      "ExportSurfaceMasksRequest",
+      "ExportSurfaceMasksResponse",
       "ExportTXAResourceRequest",
       "ExportTerrainRequest",
       "ExportTerrainResponse",
@@ -1881,10 +2020,15 @@
       "FBXReportToolResponse",
       "GenericJSONContainer",
       "GenericResourceInfo",
+      "GetAnimationExportProfilesChannelsInfoRequest",
+      "GetAnimationExportProfilesChannelsInfoResponse",
+      "GetAnimationExportProfilesResponse",
       "GetGameMaterialsResponse",
       "GetLayerInteractionRequest",
       "GetLayerInteractionResponse",
       "GetLoadedProjectsResponse",
+      "GetMaterialsByClassRequest",
+      "GetMaterialsByClassResponse",
       "GetObjectsResult",
       "GetPathToAssetsFromGuidsRequest",
       "GetPathToAssetsFromGuidsResponse",
@@ -1896,7 +2040,16 @@
       "GetRelativePathRequest",
       "GetRelativePathResponse",
       "GetResourceInfoRequest",
+      "GetResourceValidityRequest",
+      "GetResourceValidityResponse",
       "GetRoomsIds",
+      "GetSelectedEntitiesResponse",
+      "GetSurfaceMaterialsRequest",
+      "GetSurfaceMaterialsResponse",
+      "GetTerrainInfoRequest",
+      "GetTerrainInfoResponse",
+      "GetTileHeightmapRequest",
+      "GetTileHeightmapResponse",
       "GetTransformResult",
       "LayerPresetsRequest",
       "LayerPresetsResponse",
@@ -1926,6 +2079,7 @@
       "RegisterResourceResponse",
       "ResourceInfo",
       "RoomFilterBase",
+      "SelectedEntityInfo",
       "TextureResourceInfo",
       "TextureValidationRequest",
       "TextureValidationResponse",
@@ -1967,11 +2121,23 @@
     "children": []
   },
   {
+    "name": "AnimationExportProfileChannelInfo",
+    "children": []
+  },
+  {
     "name": "BakeInfoRequest",
     "children": []
   },
   {
     "name": "BakeInfoResponse",
+    "children": []
+  },
+  {
+    "name": "BakeMLODResult",
+    "children": []
+  },
+  {
+    "name": "BakeXOBMlodRequest",
     "children": []
   },
   {
@@ -2019,10 +2185,6 @@
     "children": []
   },
   {
-    "name": "EBT_HTTPErrorResponse",
-    "children": []
-  },
-  {
     "name": "ExampleRequest",
     "children": []
   },
@@ -2032,6 +2194,14 @@
   },
   {
     "name": "ExportResult",
+    "children": []
+  },
+  {
+    "name": "ExportSurfaceMasksRequest",
+    "children": []
+  },
+  {
+    "name": "ExportSurfaceMasksResponse",
     "children": []
   },
   {
@@ -2071,6 +2241,18 @@
     "children": []
   },
   {
+    "name": "GetAnimationExportProfilesChannelsInfoRequest",
+    "children": []
+  },
+  {
+    "name": "GetAnimationExportProfilesChannelsInfoResponse",
+    "children": []
+  },
+  {
+    "name": "GetAnimationExportProfilesResponse",
+    "children": []
+  },
+  {
     "name": "GetGameMaterialsResponse",
     "children": []
   },
@@ -2084,6 +2266,14 @@
   },
   {
     "name": "GetLoadedProjectsResponse",
+    "children": []
+  },
+  {
+    "name": "GetMaterialsByClassRequest",
+    "children": []
+  },
+  {
+    "name": "GetMaterialsByClassResponse",
     "children": []
   },
   {
@@ -2131,7 +2321,43 @@
     "children": []
   },
   {
+    "name": "GetResourceValidityRequest",
+    "children": []
+  },
+  {
+    "name": "GetResourceValidityResponse",
+    "children": []
+  },
+  {
     "name": "GetRoomsIds",
+    "children": []
+  },
+  {
+    "name": "GetSelectedEntitiesResponse",
+    "children": []
+  },
+  {
+    "name": "GetSurfaceMaterialsRequest",
+    "children": []
+  },
+  {
+    "name": "GetSurfaceMaterialsResponse",
+    "children": []
+  },
+  {
+    "name": "GetTerrainInfoRequest",
+    "children": []
+  },
+  {
+    "name": "GetTerrainInfoResponse",
+    "children": []
+  },
+  {
+    "name": "GetTileHeightmapRequest",
+    "children": []
+  },
+  {
+    "name": "GetTileHeightmapResponse",
     "children": []
   },
   {
@@ -2251,6 +2477,10 @@
     "children": []
   },
   {
+    "name": "SelectedEntityInfo",
+    "children": []
+  },
+  {
     "name": "TextureResourceInfo",
     "children": []
   },
@@ -2324,6 +2554,10 @@
   },
   {
     "name": "NotificationInfo",
+    "children": []
+  },
+  {
+    "name": "OfferLabel",
     "children": []
   },
   {
@@ -2423,6 +2657,8 @@
     "children": [
       "AttachPoint",
       "AudioSourceConfig",
+      "CameraCollisionSolver",
+      "CameraController",
       "CharacterFSMState",
       "CharacterSimStrategy",
       "CinematicTrackBase",
@@ -2459,6 +2695,20 @@
   },
   {
     "name": "AudioSourceConfig",
+    "children": []
+  },
+  {
+    "name": "CameraCollisionSolver",
+    "children": [
+      "CameraCollisionSolverSimple"
+    ]
+  },
+  {
+    "name": "CameraCollisionSolverSimple",
+    "children": []
+  },
+  {
+    "name": "CameraController",
     "children": []
   },
   {
@@ -2521,24 +2771,13 @@
   },
   {
     "name": "AudioDialogueData",
-    "children": [
-      "DynamicAudioDialogueData"
-    ]
-  },
-  {
-    "name": "DynamicAudioDialogueData",
     "children": []
   },
   {
     "name": "TextDialogueData",
     "children": [
-      "ObsoleteSentenceDialogueData",
       "SentenceDialogueData"
     ]
-  },
-  {
-    "name": "ObsoleteSentenceDialogueData",
-    "children": []
   },
   {
     "name": "SentenceDialogueData",
@@ -2599,6 +2838,7 @@
     "children": [
       "AnimationControllerSystem",
       "AnimationPlayerSystem",
+      "CameraSystem",
       "ConfigurableSystem",
       "DebugSystem",
       "GameMode",
@@ -2619,6 +2859,10 @@
   },
   {
     "name": "AnimationPlayerSystem",
+    "children": []
+  },
+  {
+    "name": "CameraSystem",
     "children": []
   },
   {
@@ -2887,46 +3131,23 @@
     "children": []
   },
   {
+    "name": "ServerBanEntryCatalogue",
+    "children": []
+  },
+  {
+    "name": "ServerBanEntryCatalogueFilter",
+    "children": []
+  },
+  {
+    "name": "ServerBanManifest",
+    "children": []
+  },
+  {
     "name": "ServerPingSite",
     "children": []
   },
   {
     "name": "Shape",
-    "children": []
-  },
-  {
-    "name": "TerrainToolDesc",
-    "children": [
-      "TerrainToolDesc_HeightAdd",
-      "TerrainToolDesc_HeightExact",
-      "TerrainToolDesc_HeightNoise",
-      "TerrainToolDesc_HeightSmooth",
-      "TerrainToolDesc_HeightUser",
-      "TerrainToolDesc_LayerAdd"
-    ]
-  },
-  {
-    "name": "TerrainToolDesc_HeightAdd",
-    "children": []
-  },
-  {
-    "name": "TerrainToolDesc_HeightExact",
-    "children": []
-  },
-  {
-    "name": "TerrainToolDesc_HeightNoise",
-    "children": []
-  },
-  {
-    "name": "TerrainToolDesc_HeightSmooth",
-    "children": []
-  },
-  {
-    "name": "TerrainToolDesc_HeightUser",
-    "children": []
-  },
-  {
-    "name": "TerrainToolDesc_LayerAdd",
     "children": []
   },
   {
@@ -3045,6 +3266,10 @@
   },
   {
     "name": "UserGameDataBase",
+    "children": []
+  },
+  {
+    "name": "UserSessionData",
     "children": []
   },
   {
@@ -3316,6 +3541,7 @@
       "GenerateFlowMaps",
       "GenerateFlowMapsWEPlugin",
       "LocalizationEditorPlugin",
+      "NewMlodBakerPlugin",
       "ResaveMetaPlugin",
       "ResavePlugin",
       "ResourceManagerPlugin",
@@ -3386,6 +3612,10 @@
   },
   {
     "name": "TranslationPlugin",
+    "children": []
+  },
+  {
+    "name": "NewMlodBakerPlugin",
     "children": []
   },
   {
@@ -3548,6 +3778,14 @@
     "children": []
   },
   {
+    "name": "MlodBakeJob",
+    "children": []
+  },
+  {
+    "name": "MLODBakeSettingsDialog",
+    "children": []
+  },
+  {
     "name": "MyInputComponent",
     "children": []
   },
@@ -3563,19 +3801,28 @@
       "ExampleCall",
       "ExportFBXResource",
       "ExportMaterialResource",
+      "ExportSurfaceMasks",
       "ExportTXAResource",
       "ExportTerrain",
       "ExportTextureResource",
       "FBXReportToolMessage",
+      "GetAnimationExporProfileChannelsInfo",
+      "GetAnimationExportProfileInfosInProject",
       "GetGameMaterials",
       "GetLayerInteraction",
       "GetLoadedProjects",
+      "GetMaterialsByClass",
       "GetPathToAssetsFromGuids",
       "GetPortalMat",
       "GetPrefabChildInfo",
       "GetPrefabGUID",
       "GetRelativePath",
       "GetResourceInfo",
+      "GetResourceValidity",
+      "GetSelectedEntities",
+      "GetSurfaceMaterials",
+      "GetTerrainInfo",
+      "GetTileHeightmap",
       "LayerPresets",
       "LoadedProjects",
       "LocatePrefabsFromPath",
@@ -3627,6 +3874,10 @@
     "children": []
   },
   {
+    "name": "ExportSurfaceMasks",
+    "children": []
+  },
+  {
     "name": "ExportTXAResource",
     "children": []
   },
@@ -3643,6 +3894,14 @@
     "children": []
   },
   {
+    "name": "GetAnimationExporProfileChannelsInfo",
+    "children": []
+  },
+  {
+    "name": "GetAnimationExportProfileInfosInProject",
+    "children": []
+  },
+  {
     "name": "GetGameMaterials",
     "children": []
   },
@@ -3652,6 +3911,10 @@
   },
   {
     "name": "GetLoadedProjects",
+    "children": []
+  },
+  {
+    "name": "GetMaterialsByClass",
     "children": []
   },
   {
@@ -3676,6 +3939,26 @@
   },
   {
     "name": "GetResourceInfo",
+    "children": []
+  },
+  {
+    "name": "GetResourceValidity",
+    "children": []
+  },
+  {
+    "name": "GetSelectedEntities",
+    "children": []
+  },
+  {
+    "name": "GetSurfaceMaterials",
+    "children": []
+  },
+  {
+    "name": "GetTerrainInfo",
+    "children": []
+  },
+  {
+    "name": "GetTileHeightmap",
     "children": []
   },
   {
@@ -4046,7 +4329,6 @@
       "BehaviorEditor",
       "DialogueEditor",
       "LocalizationEditor",
-      "NavmeshGeneratorMain",
       "ParticleEditor",
       "ProcAnimEditor",
       "ResourceManager",
@@ -4075,10 +4357,6 @@
     "children": []
   },
   {
-    "name": "NavmeshGeneratorMain",
-    "children": []
-  },
-  {
     "name": "ParticleEditor",
     "children": []
   },
@@ -4101,12 +4379,23 @@
   {
     "name": "handle64",
     "children": [
+      "DateTimeView",
+      "Duration",
       "EntityID",
       "KickCauseCode",
       "ProcessHandle",
+      "Timestamp",
       "TypeID",
       "WorldTimestamp"
     ]
+  },
+  {
+    "name": "DateTimeView",
+    "children": []
+  },
+  {
+    "name": "Duration",
+    "children": []
   },
   {
     "name": "EntityID",
@@ -4118,6 +4407,10 @@
   },
   {
     "name": "ProcessHandle",
+    "children": []
+  },
+  {
+    "name": "Timestamp",
     "children": []
   },
   {
@@ -4154,6 +4447,10 @@
   },
   {
     "name": "ResourceExportCrawler",
+    "children": []
+  },
+  {
+    "name": "ResourceUtils",
     "children": []
   },
   {
@@ -4207,6 +4504,10 @@
     "children": []
   },
   {
+    "name": "ServerBanManagerApi",
+    "children": []
+  },
+  {
     "name": "ServerCatalogueApi",
     "children": []
   },
@@ -4236,6 +4537,14 @@
   },
   {
     "name": "ServerLobbyApi",
+    "children": []
+  },
+  {
+    "name": "ServerPlayerGameDataBase",
+    "children": []
+  },
+  {
+    "name": "ServerPlayerInfo",
     "children": []
   },
   {
@@ -4427,15 +4736,10 @@
   {
     "name": "BaseContainerCustomTitle",
     "children": [
-      "BaseContainerCustomTitleBlenderVersion",
       "BaseContainerCustomTitleField",
       "PeerConfigViewTitle",
       "TranslationPluginFields"
     ]
-  },
-  {
-    "name": "BaseContainerCustomTitleBlenderVersion",
-    "children": []
   },
   {
     "name": "BaseContainerCustomTitleField",
@@ -4540,7 +4844,15 @@
     "children": []
   },
   {
+    "name": "UserBanManagerApi",
+    "children": []
+  },
+  {
     "name": "UserGameDataApi",
+    "children": []
+  },
+  {
+    "name": "UserSessionApi",
     "children": []
   },
   {
@@ -6200,6 +6512,10 @@
     "children": []
   },
   {
+    "name": "DlcManager",
+    "children": []
+  },
+  {
     "name": "SaveGameManager",
     "children": [
       "ReforgerSaveGameManager"
@@ -6764,6 +7080,7 @@
       "SlotManagerComponent",
       "SocialComponent",
       "VehicleBaseSimulation",
+      "VehicleWheelEffectComponent",
       "VoNComponent"
     ]
   },
@@ -7173,6 +7490,12 @@
   },
   {
     "name": "MagazineComponent",
+    "children": [
+      "SCR_MagazineComponent"
+    ]
+  },
+  {
+    "name": "SCR_MagazineComponent",
     "children": []
   },
   {
@@ -7353,11 +7676,16 @@
   {
     "name": "SCR_2DSightsComponent",
     "children": [
-      "SCR_2DPIPSightsComponent"
+      "SCR_2DPIPSightsComponent",
+      "SCR_NV2DSightsComponent"
     ]
   },
   {
     "name": "SCR_2DPIPSightsComponent",
+    "children": []
+  },
+  {
+    "name": "SCR_NV2DSightsComponent",
     "children": []
   },
   {
@@ -8093,6 +8421,16 @@
     "children": []
   },
   {
+    "name": "VehicleWheelEffectComponent",
+    "children": [
+      "SCR_VehicleDustPerWheel"
+    ]
+  },
+  {
+    "name": "SCR_VehicleDustPerWheel",
+    "children": []
+  },
+  {
     "name": "VoNComponent",
     "children": [
       "SCR_VoNComponent"
@@ -8456,6 +8794,7 @@
       "SlotManagerComponentClass",
       "SocialComponentClass",
       "VehicleBaseSimulationClass",
+      "VehicleWheelEffectComponentClass",
       "VoNComponentClass"
     ]
   },
@@ -8865,6 +9204,12 @@
   },
   {
     "name": "MagazineComponentClass",
+    "children": [
+      "SCR_MagazineComponentClass"
+    ]
+  },
+  {
+    "name": "SCR_MagazineComponentClass",
     "children": []
   },
   {
@@ -9045,11 +9390,16 @@
   {
     "name": "SCR_2DSightsComponentClass",
     "children": [
-      "SCR_2DPIPSightsComponentClass"
+      "SCR_2DPIPSightsComponentClass",
+      "SCR_NV2DSightsComponentClass"
     ]
   },
   {
     "name": "SCR_2DPIPSightsComponentClass",
+    "children": []
+  },
+  {
+    "name": "SCR_NV2DSightsComponentClass",
     "children": []
   },
   {
@@ -9782,6 +10132,16 @@
   },
   {
     "name": "VehicleWheeledSimulation_SA_BClass",
+    "children": []
+  },
+  {
+    "name": "VehicleWheelEffectComponentClass",
+    "children": [
+      "SCR_VehicleDustPerWheelClass"
+    ]
+  },
+  {
+    "name": "SCR_VehicleDustPerWheelClass",
     "children": []
   },
   {
@@ -14903,6 +15263,10 @@
     "children": []
   },
   {
+    "name": "MagazineWellSmokeLauncherL8A1Class",
+    "children": []
+  },
+  {
     "name": "MagazineWellStanag556Class",
     "children": []
   },
@@ -15621,6 +15985,7 @@
     "name": "SCR_ConsumableEffectHealthItems",
     "children": [
       "SCR_ConsumableBandage",
+      "SCR_ConsumableFlaskEffect",
       "SCR_ConsumableMorphine",
       "SCR_ConsumableSalineBag",
       "SCR_ConsumableTourniquet"
@@ -15628,6 +15993,10 @@
   },
   {
     "name": "SCR_ConsumableBandage",
+    "children": []
+  },
+  {
+    "name": "SCR_ConsumableFlaskEffect",
     "children": []
   },
   {
@@ -15873,6 +16242,21 @@
   },
   {
     "name": "SCR_SimpleMessagePresets",
+    "children": []
+  },
+  {
+    "name": "SCR_TextFormatContainerBase",
+    "children": [
+      "SCR_TextFormatContainer< Class T >",
+      "SCR_TextFormatContainerArray< Class T >"
+    ]
+  },
+  {
+    "name": "SCR_TextFormatContainer< Class T >",
+    "children": []
+  },
+  {
+    "name": "SCR_TextFormatContainerArray< Class T >",
     "children": []
   },
   {
@@ -16282,6 +16666,7 @@
       "ContentBrowserUI",
       "SCR_CampaignMenuUI",
       "SCR_CareerProfileMenuUI",
+      "SCR_DLCMenuUI",
       "SCR_GroupMenu",
       "SCR_PlayerListMenu",
       "SCR_ProfileSuperMenu",
@@ -16303,6 +16688,10 @@
   },
   {
     "name": "SCR_CareerProfileMenuUI",
+    "children": []
+  },
+  {
+    "name": "SCR_DLCMenuUI",
     "children": []
   },
   {
@@ -16747,7 +17136,8 @@
       "SCR_AIAnimation_OfficerMission_Table",
       "SCR_AIAnimation_OfficerMission_Walking",
       "SCR_AIAnimation_Pushups",
-      "SCR_AIAnimation_Sitting"
+      "SCR_AIAnimation_Sitting",
+      "SCR_AILoiterAnimation_Base"
     ]
   },
   {
@@ -16768,6 +17158,27 @@
   },
   {
     "name": "SCR_AIAnimation_Sitting",
+    "children": []
+  },
+  {
+    "name": "SCR_AILoiterAnimation_Base",
+    "children": [
+      "SCR_AIAnimation_Recovery"
+    ]
+  },
+  {
+    "name": "SCR_AIAnimation_Recovery",
+    "children": [
+      "SCR_AIAnimation_Recovery_Pull",
+      "SCR_AIAnimation_Recovery_Push"
+    ]
+  },
+  {
+    "name": "SCR_AIAnimation_Recovery_Pull",
+    "children": []
+  },
+  {
+    "name": "SCR_AIAnimation_Recovery_Push",
     "children": []
   },
   {
@@ -16946,7 +17357,8 @@
       "SCR_AIGoalReaction_ProvideAmmo",
       "SCR_AIGoalReaction_SeekAndDestroy",
       "SCR_AIGoalReaction_Suppress",
-      "SCR_AIGoalReaction_ThrowGrenadeTo"
+      "SCR_AIGoalReaction_ThrowGrenadeTo",
+      "SCR_AIGoalReaction_UnflipVehicle"
     ]
   },
   {
@@ -17043,6 +17455,10 @@
   },
   {
     "name": "SCR_AIGoalReaction_ThrowGrenadeTo",
+    "children": []
+  },
+  {
+    "name": "SCR_AIGoalReaction_UnflipVehicle",
     "children": []
   },
   {
@@ -17434,6 +17850,10 @@
     "children": []
   },
   {
+    "name": "SCR_AmmoList",
+    "children": []
+  },
+  {
     "name": "SCR_AmmoTypeInfoConfig",
     "children": []
   },
@@ -17710,6 +18130,7 @@
       "SCR_CanItemBeInspectedCondition",
       "SCR_CanOperateVehicleDoorCondition",
       "SCR_CanTurnOutCondition",
+      "SCR_CanUseCanteenCondition",
       "SCR_CharacterBleedingCondition",
       "SCR_CharacterCanFireWeaponCondition",
       "SCR_CharacterCanGetOutCondition",
@@ -17850,6 +18271,10 @@
   },
   {
     "name": "SCR_CanTurnOutCondition",
+    "children": []
+  },
+  {
+    "name": "SCR_CanUseCanteenCondition",
     "children": []
   },
   {
@@ -21343,13 +21768,24 @@
   },
   {
     "name": "SCR_ConfigurableDialogUiButtonPreset",
+    "children": [
+      "SCR_PlatformSpecificConfigurableDialogUiButtonPreset"
+    ]
+  },
+  {
+    "name": "SCR_PlatformSpecificConfigurableDialogUiButtonPreset",
     "children": []
   },
   {
     "name": "SCR_ConfigurableDialogUiPreset",
     "children": [
+      "SCR_AdvancedKeybindingPresetDialog",
       "SCR_KickDialogUiPreset"
     ]
+  },
+  {
+    "name": "SCR_AdvancedKeybindingPresetDialog",
+    "children": []
   },
   {
     "name": "SCR_KickDialogUiPreset",
@@ -21693,6 +22129,10 @@
   },
   {
     "name": "SCR_DestructionUtility",
+    "children": []
+  },
+  {
+    "name": "SCR_DLCHelperTools",
     "children": []
   },
   {
@@ -22540,6 +22980,12 @@
   },
   {
     "name": "SCR_FieldManualPiece_Image",
+    "children": [
+      "SCR_FieldManualPiece_MagazineRepackingImage"
+    ]
+  },
+  {
+    "name": "SCR_FieldManualPiece_MagazineRepackingImage",
     "children": []
   },
   {
@@ -22564,6 +23010,12 @@
   },
   {
     "name": "SCR_FieldManualPiece_Text",
+    "children": [
+      "SCR_FieldManualPiece_MagazineRepackingText"
+    ]
+  },
+  {
+    "name": "SCR_FieldManualPiece_MagazineRepackingText",
     "children": []
   },
   {
@@ -23025,6 +23477,14 @@
     "children": []
   },
   {
+    "name": "SCR_InputFilterConfiguration",
+    "children": []
+  },
+  {
+    "name": "SCR_InputHelper",
+    "children": []
+  },
+  {
     "name": "SCR_InsectDef",
     "children": []
   },
@@ -23094,6 +23554,12 @@
   },
   {
     "name": "SCR_KeyBindingBind",
+    "children": [
+      "SCR_JoystickAxisBindig"
+    ]
+  },
+  {
+    "name": "SCR_JoystickAxisBindig",
     "children": []
   },
   {
@@ -23218,6 +23684,10 @@
   },
   {
     "name": "SCR_MagazineIndicatorConfiguration",
+    "children": []
+  },
+  {
+    "name": "SCR_MagRepackingData",
     "children": []
   },
   {
@@ -24191,10 +24661,6 @@
   },
   {
     "name": "SCR_PrefabStructureFillingPlugin_TypeSelection",
-    "children": []
-  },
-  {
-    "name": "SCR_ProfaneFilter",
     "children": []
   },
   {
@@ -26526,7 +26992,8 @@
       "SCR_ReusableInventoryItemHintUIInfo",
       "SCR_SupplyCostItemHintUIInfo",
       "SCR_SupplyRefundItemHintUIInfo",
-      "SCR_ValuableIntelItemHintUIInfo"
+      "SCR_ValuableIntelItemHintUIInfo",
+      "SCR_WaterInventoryItemHintUIInfo"
     ]
   },
   {
@@ -26595,6 +27062,10 @@
   },
   {
     "name": "SCR_ValuableIntelItemHintUIInfo",
+    "children": []
+  },
+  {
+    "name": "SCR_WaterInventoryItemHintUIInfo",
     "children": []
   },
   {
@@ -27279,6 +27750,7 @@
       "SCR_AISearchAndDestroyActivity",
       "SCR_AIStaticArtilleryActivity",
       "SCR_AISuppressActivity",
+      "SCR_AIUnflipVehicleActivity",
       "SCR_AIVehicleCombatActivity"
     ]
   },
@@ -27358,6 +27830,10 @@
   },
   {
     "name": "SCR_AISuppressActivity",
+    "children": []
+  },
+  {
+    "name": "SCR_AIUnflipVehicleActivity",
     "children": []
   },
   {
@@ -27539,7 +28015,8 @@
     "name": "SCR_AIVehicleBehavior",
     "children": [
       "SCR_AIGetInVehicle",
-      "SCR_AIGetOutVehicle"
+      "SCR_AIGetOutVehicle",
+      "SCR_AIUnflipVehicle"
     ]
   },
   {
@@ -27548,6 +28025,10 @@
   },
   {
     "name": "SCR_AIGetOutVehicle",
+    "children": []
+  },
+  {
+    "name": "SCR_AIUnflipVehicle",
     "children": []
   },
   {
@@ -27677,6 +28158,7 @@
       "SCR_AIMessage_Retreat",
       "SCR_AIMessage_Suppress",
       "SCR_AIMessage_ThrowGrenadeTo",
+      "SCR_AIMessage_UnflipVehicle",
       "SCR_AIMessage_Vehicle"
     ]
   },
@@ -27777,6 +28259,10 @@
   },
   {
     "name": "SCR_AIMessage_ThrowGrenadeTo",
+    "children": []
+  },
+  {
+    "name": "SCR_AIMessage_UnflipVehicle",
     "children": []
   },
   {
@@ -28180,6 +28666,7 @@
       "MagazineWellRPG7",
       "MagazineWellRU_GP",
       "MagazineWellSVD",
+      "MagazineWellSmokeLauncherL8A1",
       "MagazineWellStanag556",
       "MagazineWellUK59",
       "MagazineWellUS_UGL",
@@ -28275,6 +28762,10 @@
   },
   {
     "name": "MagazineWellSVD",
+    "children": []
+  },
+  {
+    "name": "MagazineWellSmokeLauncherL8A1",
     "children": []
   },
   {
@@ -28613,6 +29104,7 @@
       "SCR_ScenarioFrameworkActionVoiceOverPlayLine",
       "SCR_ScenarioFrameworkActionVoiceOverPlaySequence",
       "SCR_ScenarioFrameworkActionWaitAndExecute",
+      "SCR_ScenarioFrameworkAssignItemToQuickSlot",
       "SCR_ScenarioFrameworkCreateVariable",
       "SCR_ScenarioFrameworkGetVariableValue",
       "SCR_ScenarioFrameworkOnWeaponAmmoCountChangedAction",
@@ -29113,6 +29605,10 @@
     "children": []
   },
   {
+    "name": "SCR_ScenarioFrameworkAssignItemToQuickSlot",
+    "children": []
+  },
+  {
     "name": "SCR_ScenarioFrameworkCreateVariable",
     "children": []
   },
@@ -29223,6 +29719,7 @@
       "SCR_DrowningDamageEffect",
       "SCR_ExplosionDamageEffect",
       "SCR_FallDamageEffect",
+      "SCR_FlaskStaminaRecoveryDamageEffect",
       "SCR_FragmentationDamageEffect",
       "SCR_GameMasterActionDamageEffect",
       "SCR_IncendiaryDamageEffect",
@@ -29311,6 +29808,10 @@
     "children": []
   },
   {
+    "name": "SCR_FlaskStaminaRecoveryDamageEffect",
+    "children": []
+  },
+  {
     "name": "SCR_FragmentationDamageEffect",
     "children": []
   },
@@ -29359,6 +29860,7 @@
     "name": "SCR_DotDamageEffect",
     "children": [
       "SCR_BleedingDamageEffect",
+      "SCR_FlaskStaminaRegenBoostDamageEffect",
       "SCR_MorphineDamageEffect",
       "SCR_PassiveHitZoneRegenDamageEffect",
       "SCR_PhysicalHitZonesRegenDamageEffect",
@@ -29368,6 +29870,10 @@
   },
   {
     "name": "SCR_BleedingDamageEffect",
+    "children": []
+  },
+  {
+    "name": "SCR_FlaskStaminaRegenBoostDamageEffect",
     "children": []
   },
   {
@@ -29481,6 +29987,7 @@
       "SCR_AIDecoTestIsOutVehicleCondition",
       "SCR_AIDecoTestIsReloading",
       "SCR_AIDecoTestIsSlaveGroupOfEntity",
+      "SCR_AIDecoTestIsVehicleFlipped",
       "SCR_AIDecoTestIsWaypoint",
       "SCR_AIDecoTestVehicleIsMoving"
     ]
@@ -29586,6 +30093,10 @@
   },
   {
     "name": "SCR_AIDecoTestIsSlaveGroupOfEntity",
+    "children": []
+  },
+  {
+    "name": "SCR_AIDecoTestIsVehicleFlipped",
     "children": []
   },
   {
@@ -30486,7 +30997,7 @@
       "SCR_CampaignReconfigureRelayUserAction",
       "SCR_CampaignRepairEntityUserAction",
       "SCR_CatalogSpawnerUserAction",
-      "SCR_ChangeBallisticPageAction",
+      "SCR_ChangeDataPageAction",
       "SCR_ChangeFuzeTimerUserAction",
       "SCR_DeployInventoryItemBaseAction",
       "SCR_DismantleInventoryItemBaseAction",
@@ -30711,7 +31222,7 @@
     "children": []
   },
   {
-    "name": "SCR_ChangeBallisticPageAction",
+    "name": "SCR_ChangeDataPageAction",
     "children": [
       "SCR_ChangeBallisticShellTypeAction"
     ]
@@ -31013,6 +31524,7 @@
       "SCR_BaseAudioScriptedUserAction",
       "SCR_BaseUseSupportStationAction",
       "SCR_CampaignBuildingBuildUserAction",
+      "SCR_CutFoliageAction",
       "SCR_ExplosiveChargeAction",
       "SCR_LoadItemsAction",
       "SCR_MortarShootAction",
@@ -31022,7 +31534,8 @@
       "SCR_ResourceContainerVehicleLoadAction",
       "SCR_ResourceContainerVehicleUnloadAction",
       "SCR_ResourceEntityRefundAction",
-      "SCR_ToggleHandbrakeAction"
+      "SCR_ToggleHandbrakeAction",
+      "SCR_VehicleWeaponROFSwitchAction"
     ]
   },
   {
@@ -31151,6 +31664,10 @@
     "children": []
   },
   {
+    "name": "SCR_CutFoliageAction",
+    "children": []
+  },
+  {
     "name": "SCR_ExplosiveChargeAction",
     "children": [
       "SCR_ArmExplosiveChargeWithRemoteFuzeAction",
@@ -31227,6 +31744,10 @@
   },
   {
     "name": "SCR_ToggleHandbrakeAction",
+    "children": []
+  },
+  {
+    "name": "SCR_VehicleWeaponROFSwitchAction",
     "children": []
   },
   {
@@ -31684,11 +32205,17 @@
   {
     "name": "GamepadEffect",
     "children": [
+      "GamepadEffectCollection",
       "GamepadLightEffect",
       "GamepadRumbleEffect",
       "GamepadTriggerEffect",
-      "GamepadVibrationEffect"
+      "GamepadVibrationEffect",
+      "JoystickCommonEffect"
     ]
+  },
+  {
+    "name": "GamepadEffectCollection",
+    "children": []
   },
   {
     "name": "GamepadLightEffect",
@@ -31704,6 +32231,26 @@
   },
   {
     "name": "GamepadVibrationEffect",
+    "children": []
+  },
+  {
+    "name": "JoystickCommonEffect",
+    "children": [
+      "JoystickConditionEffect",
+      "JoystickForceEffect",
+      "JoystickPeriodicEffect"
+    ]
+  },
+  {
+    "name": "JoystickConditionEffect",
+    "children": []
+  },
+  {
+    "name": "JoystickForceEffect",
+    "children": []
+  },
+  {
+    "name": "JoystickPeriodicEffect",
     "children": []
   },
   {
@@ -32283,6 +32830,7 @@
       "SCR_AIFindArsenalWithPrefab",
       "SCR_AIFindAvailableVehicle",
       "SCR_AIFindCover",
+      "SCR_AIFindFlippedVehicle",
       "SCR_AIFindItemInInventory",
       "SCR_AIFindMedic",
       "SCR_AIFindResupplier",
@@ -32316,6 +32864,7 @@
       "SCR_AIGetPosForward",
       "SCR_AIGetPosForwardToTarget",
       "SCR_AIGetPositionAndRotation",
+      "SCR_AIGetRandomCircumferencePosition",
       "SCR_AIGetRandomLookPosition",
       "SCR_AIGetRandomPoint",
       "SCR_AIGetRandomPointInCircularSector",
@@ -32332,6 +32881,7 @@
       "SCR_AIGetTarget",
       "SCR_AIGetTargetInfoProperties",
       "SCR_AIGetTargetSuppressionVolume",
+      "SCR_AIGetUnflipPosition",
       "SCR_AIGetUsableVehicle",
       "SCR_AIGetWaypointParameters",
       "SCR_AIGetWeaponOfType",
@@ -32389,10 +32939,12 @@
       "SCR_AIToggleFlashlights",
       "SCR_AIToggleMaxLOD",
       "SCR_AIUnEquipItems",
+      "SCR_AIUnflipVehicleTask",
       "SCR_AIUpdateCombatMoveStateTimers",
       "SCR_AIUpdateExecutedAction",
       "SCR_AIUpdateTargetAttackData",
       "SCR_AIUpdateTargetSuppressionData",
+      "SCR_AIVectorTransform",
       "SCR_AIWaitCombatMoveRequest",
       "SCR_AIWaitForNewCombatComponentWeapon",
       "SCR_AIWeaponHandlingBase",
@@ -32460,7 +33012,9 @@
       "SCR_AIGetStaticArtilleryBehaviorParameters",
       "SCR_AIGetSuppressActivityParameters",
       "SCR_AIGetSuppressBehaviorParameters",
-      "SCR_AIGetThrowGrenadeToBehaviorParameters"
+      "SCR_AIGetThrowGrenadeToBehaviorParameters",
+      "SCR_AIGetUnflipActivityParameters",
+      "SCR_AIUnflipVehicleBehaviorParameters"
     ]
   },
   {
@@ -32589,6 +33143,14 @@
   },
   {
     "name": "SCR_AIGetThrowGrenadeToBehaviorParameters",
+    "children": []
+  },
+  {
+    "name": "SCR_AIGetUnflipActivityParameters",
+    "children": []
+  },
+  {
+    "name": "SCR_AIUnflipVehicleBehaviorParameters",
     "children": []
   },
   {
@@ -32879,6 +33441,10 @@
     "children": []
   },
   {
+    "name": "SCR_AIFindFlippedVehicle",
+    "children": []
+  },
+  {
     "name": "SCR_AIFindItemInInventory",
     "children": []
   },
@@ -33027,6 +33593,10 @@
     "children": []
   },
   {
+    "name": "SCR_AIGetRandomCircumferencePosition",
+    "children": []
+  },
+  {
     "name": "SCR_AIGetRandomLookPosition",
     "children": []
   },
@@ -33088,6 +33658,10 @@
   },
   {
     "name": "SCR_AIGetTargetSuppressionVolume",
+    "children": []
+  },
+  {
+    "name": "SCR_AIGetUnflipPosition",
     "children": []
   },
   {
@@ -33292,6 +33866,7 @@
       "SCR_AISendGoalMessage_SeekAndDestroy",
       "SCR_AISendGoalMessage_Suppress",
       "SCR_AISendGoalMessage_ThrowGrenadeTo",
+      "SCR_AISendGoalMessage_UnflipVehicle",
       "SCR_AISendInfoMessage_FoundCorpse",
       "SCR_AISendInfoMessage_HealFailed",
       "SCR_AISendInfoMessage_NoAmmo",
@@ -33406,6 +33981,10 @@
   },
   {
     "name": "SCR_AISendGoalMessage_ThrowGrenadeTo",
+    "children": []
+  },
+  {
+    "name": "SCR_AISendGoalMessage_UnflipVehicle",
     "children": []
   },
   {
@@ -33590,6 +34169,10 @@
     "children": []
   },
   {
+    "name": "SCR_AIUnflipVehicleTask",
+    "children": []
+  },
+  {
     "name": "SCR_AIUpdateCombatMoveStateTimers",
     "children": []
   },
@@ -33603,6 +34186,10 @@
   },
   {
     "name": "SCR_AIUpdateTargetSuppressionData",
+    "children": []
+  },
+  {
+    "name": "SCR_AIVectorTransform",
     "children": []
   },
   {
@@ -34644,7 +35231,7 @@
     "children": [
       "EmissiveLightSurfaceSlot",
       "SCR_WeaponRackSlotInfo",
-      "SCR_WheelSlotInfo"
+      "WheelSlotInfo"
     ]
   },
   {
@@ -34660,6 +35247,12 @@
   {
     "name": "SCR_WeaponRackSlotInfo",
     "children": []
+  },
+  {
+    "name": "WheelSlotInfo",
+    "children": [
+      "SCR_WheelSlotInfo"
+    ]
   },
   {
     "name": "SCR_WheelSlotInfo",
@@ -35346,6 +35939,16 @@
   },
   {
     "name": "GamepadIOHandlerComponent",
+    "children": []
+  },
+  {
+    "name": "ParticleContactComponent",
+    "children": [
+      "SCR_ParticleContactComponent"
+    ]
+  },
+  {
+    "name": "SCR_ParticleContactComponent",
     "children": []
   },
   {
@@ -36556,6 +37159,10 @@
     "children": []
   },
   {
+    "name": "SCR_FoliageDestructionComponent",
+    "children": []
+  },
+  {
     "name": "SCR_FuelNozzleHolderComponent",
     "children": []
   },
@@ -36780,10 +37387,6 @@
   },
   {
     "name": "SCR_NotificationsComponent",
-    "children": []
-  },
-  {
-    "name": "SCR_ParticleContactComponent",
     "children": []
   },
   {
@@ -37178,6 +37781,10 @@
     "children": []
   },
   {
+    "name": "SCR_WaterContainerComponent",
+    "children": []
+  },
+  {
     "name": "SCR_WeaponBlastComponent",
     "children": []
   },
@@ -37188,8 +37795,7 @@
       "SCR_FuelConsumptionComponent",
       "SCR_GadgetComponent",
       "SCR_GadgetManagerComponent",
-      "SCR_PowerComponent",
-      "SCR_VehicleDustPerWheel"
+      "SCR_PowerComponent"
     ]
   },
   {
@@ -37210,6 +37816,7 @@
       "SCR_DataDisplayGadgetComponent",
       "SCR_DetonatorGadgetComponent",
       "SCR_FlashlightComponent",
+      "SCR_MagazineGadgetComponent",
       "SCR_MapGadgetComponent",
       "SCR_MortarShellGadgetComponent",
       "SCR_RadioComponent",
@@ -37252,6 +37859,10 @@
     "children": []
   },
   {
+    "name": "SCR_MagazineGadgetComponent",
+    "children": []
+  },
+  {
     "name": "SCR_MapGadgetComponent",
     "children": []
   },
@@ -37277,10 +37888,6 @@
   },
   {
     "name": "SCR_PowerComponent",
-    "children": []
-  },
-  {
-    "name": "SCR_VehicleDustPerWheel",
     "children": []
   },
   {
@@ -37331,6 +37938,16 @@
   },
   {
     "name": "GamepadIOHandlerComponentClass",
+    "children": []
+  },
+  {
+    "name": "ParticleContactComponentClass",
+    "children": [
+      "SCR_ParticleContactComponentClass"
+    ]
+  },
+  {
+    "name": "SCR_ParticleContactComponentClass",
     "children": []
   },
   {
@@ -38545,6 +39162,10 @@
     "children": []
   },
   {
+    "name": "SCR_FoliageDestructionComponentClass",
+    "children": []
+  },
+  {
     "name": "SCR_FuelNozzleHolderComponentClass",
     "children": []
   },
@@ -38769,10 +39390,6 @@
   },
   {
     "name": "SCR_NotificationsComponentClass",
-    "children": []
-  },
-  {
-    "name": "SCR_ParticleContactComponentClass",
     "children": []
   },
   {
@@ -39159,6 +39776,10 @@
     "children": []
   },
   {
+    "name": "SCR_WaterContainerComponentClass",
+    "children": []
+  },
+  {
     "name": "SCR_WeaponBlastComponentClass",
     "children": []
   },
@@ -39171,8 +39792,7 @@
       "SCR_GadgetManagerComponentClass",
       "SCR_PowerComponentClass",
       "SCR_SpawnerRequestComponentClass",
-      "SCR_VONControllerClass",
-      "SCR_VehicleDustPerWheelClass"
+      "SCR_VONControllerClass"
     ]
   },
   {
@@ -39193,6 +39813,7 @@
       "SCR_DataDisplayGadgetComponentClass",
       "SCR_DetonatorGadgetComponentClass",
       "SCR_FlashlightComponentClass",
+      "SCR_MagazineGadgetComponentClass",
       "SCR_MapGadgetComponentClass",
       "SCR_MortarShellGadgetComponentClass",
       "SCR_RadioComponentClass",
@@ -39235,6 +39856,10 @@
     "children": []
   },
   {
+    "name": "SCR_MagazineGadgetComponentClass",
+    "children": []
+  },
+  {
     "name": "SCR_MapGadgetComponentClass",
     "children": []
   },
@@ -39268,10 +39893,6 @@
   },
   {
     "name": "SCR_VONControllerClass",
-    "children": []
-  },
-  {
-    "name": "SCR_VehicleDustPerWheelClass",
     "children": []
   },
   {
@@ -39951,6 +40572,7 @@
       "SCR_BlockedUsersDialogUI",
       "SCR_CancelDownloadConfirmationDialog",
       "SCR_CancelMyReportDialog",
+      "SCR_DLCOwnershipDialog",
       "SCR_DeleteAddonDialog",
       "SCR_DeleteAddonsListDialog",
       "SCR_DownloadConfirmationDialog",
@@ -40039,6 +40661,10 @@
   },
   {
     "name": "SCR_CancelMyReportDialog",
+    "children": []
+  },
+  {
+    "name": "SCR_DLCOwnershipDialog",
     "children": []
   },
   {
@@ -40520,6 +41146,7 @@
       "SCR_ArsenalInventorySlotUI",
       "SCR_InventoryAttachmentSlotUI",
       "SCR_InventoryHitZoneSlotUI",
+      "SCR_InventoryMagazineSlotUI",
       "SCR_InventorySlotGadgetUI",
       "SCR_InventorySlotGearInspectionUI",
       "SCR_InventorySlotQuickSlotUI",
@@ -40539,6 +41166,10 @@
   },
   {
     "name": "SCR_InventoryHitZoneSlotUI",
+    "children": []
+  },
+  {
+    "name": "SCR_InventoryMagazineSlotUI",
     "children": []
   },
   {
@@ -41036,6 +41667,7 @@
       "SCR_BreadCrumbsElementComponent",
       "SCR_BudgetProgressEditorUIComponent",
       "SCR_BuildModeShowHideOnSupplyEnabledUIComponent",
+      "SCR_ButtonDLCStoreLinkComponent",
       "SCR_ContentBrowserDetails_GalleryComponent",
       "SCR_ContentBrowserTileComponent",
       "SCR_ContentBrowser_AddonsTooltipComponent",
@@ -41056,6 +41688,7 @@
       "SCR_HUDMenuComponent",
       "SCR_HostButtonComponent",
       "SCR_InventoryIdentityItemWidgetComponent",
+      "SCR_JoystickBindingRowComponent",
       "SCR_KeybindActionDisplayComponent",
       "SCR_KeybindActionDisplayRowComponent",
       "SCR_KeybindRowComponent",
@@ -41177,6 +41810,10 @@
     "children": []
   },
   {
+    "name": "SCR_ButtonDLCStoreLinkComponent",
+    "children": []
+  },
+  {
     "name": "SCR_ContentBrowserDetails_GalleryComponent",
     "children": []
   },
@@ -41283,6 +41920,10 @@
   },
   {
     "name": "SCR_InventoryIdentityItemWidgetComponent",
+    "children": []
+  },
+  {
+    "name": "SCR_JoystickBindingRowComponent",
     "children": []
   },
   {
@@ -41412,6 +42053,7 @@
       "SCR_CampaignMapUIElement",
       "SCR_CampaignMapUIPlayerHighlight",
       "SCR_MapUISpawnPoint",
+      "SCR_MapUITransportUnit",
       "SCR_TaskMapUIComponent",
       "SCR_TutorialFastTravelMapElement"
     ]
@@ -41453,6 +42095,10 @@
   },
   {
     "name": "SCR_MapUISpawnPoint",
+    "children": []
+  },
+  {
+    "name": "SCR_MapUITransportUnit",
     "children": []
   },
   {
@@ -41722,6 +42368,7 @@
       "SCR_EditorSettingsSubMenu",
       "SCR_GameplaySettingsSubMenu",
       "SCR_InterfaceSettingsSubMenu",
+      "SCR_JoystickBindSettingsSubMenu",
       "SCR_KeybindSetting",
       "SCR_VideoSettingsConsoleSubMenu",
       "SCR_VideoSettingsHandheldSubMenu",
@@ -41746,6 +42393,10 @@
   },
   {
     "name": "SCR_InterfaceSettingsSubMenu",
+    "children": []
+  },
+  {
+    "name": "SCR_JoystickBindSettingsSubMenu",
     "children": []
   },
   {
@@ -42245,6 +42896,7 @@
     "name": "SCR_StickyNotificationUIComponent",
     "children": [
       "SCR_AutotuneStickyNotificationUIComponent",
+      "SCR_DLCOwnershipStickyNotificationUIComponent",
       "SCR_GroupInviteStickyNotificationUIComponent",
       "SCR_NoGameMasterStickyNotificationUIComponent",
       "SCR_VotingStickyNotificationUIComponent"
@@ -42252,6 +42904,10 @@
   },
   {
     "name": "SCR_AutotuneStickyNotificationUIComponent",
+    "children": []
+  },
+  {
+    "name": "SCR_DLCOwnershipStickyNotificationUIComponent",
     "children": []
   },
   {
@@ -42929,10 +43585,6 @@
   },
   {
     "name": "UIConstants",
-    "children": []
-  },
-  {
-    "name": "VehicleDust",
     "children": []
   },
   {
@@ -43621,6 +44273,7 @@
       "ProcAnimSystem",
       "ProjectileSimulationSystem",
       "RadialMenuSystem",
+      "RadioSpatialSystem",
       "RecordInactivePhysEntitiesStateSystem",
       "RegionalActionsSystem",
       "ReplicatedCamerasSystem",
@@ -43633,8 +44286,11 @@
       "SCR_AnimatedBeltSystem",
       "SCR_BloodOnClothesSystem",
       "SCR_CharacterSlowdownEasingSystem",
+      "SCR_DLCOwnershipSystem",
       "SCR_DamageSufferingSystem",
       "SCR_DeployableSpawnPointSystem",
+      "SCR_FoliageDestructionSystem",
+      "SCR_MagazineRepackingSystem",
       "SCR_MapMarkerManagerSystem",
       "SCR_MilitaryBaseSystem",
       "SCR_PhysicsObserverSystem",
@@ -43649,12 +44305,12 @@
       "StaminaSystem",
       "TagSystem",
       "VehicleDebugDrawSystem",
+      "VehicleDustSystem",
       "VehicleLightPortalSystem",
       "VehiclePostSimulationSystem",
       "VehicleSimulationSystem",
       "VehicleUpdateAnimsSystem",
       "VehicleUpdateSignalsSystem",
-      "VehiclesDustSystem",
       "VicinitySystem",
       "VisibilityConsumerSystem",
       "VisibilityProducerSystem",
@@ -43933,6 +44589,10 @@
     "children": []
   },
   {
+    "name": "RadioSpatialSystem",
+    "children": []
+  },
+  {
     "name": "RecordInactivePhysEntitiesStateSystem",
     "children": []
   },
@@ -43981,11 +44641,23 @@
     "children": []
   },
   {
+    "name": "SCR_DLCOwnershipSystem",
+    "children": []
+  },
+  {
     "name": "SCR_DamageSufferingSystem",
     "children": []
   },
   {
     "name": "SCR_DeployableSpawnPointSystem",
+    "children": []
+  },
+  {
+    "name": "SCR_FoliageDestructionSystem",
+    "children": []
+  },
+  {
+    "name": "SCR_MagazineRepackingSystem",
     "children": []
   },
   {
@@ -44051,6 +44723,10 @@
     "children": []
   },
   {
+    "name": "VehicleDustSystem",
+    "children": []
+  },
+  {
     "name": "VehicleLightPortalSystem",
     "children": []
   },
@@ -44068,10 +44744,6 @@
   },
   {
     "name": "VehicleUpdateSignalsSystem",
-    "children": []
-  },
-  {
-    "name": "VehiclesDustSystem",
     "children": []
   },
   {

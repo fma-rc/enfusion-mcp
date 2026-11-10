@@ -27,7 +27,7 @@ claude mcp add --scope user enfusion-mcp \
 
 | Tool | What it does |
 |------|-------------|
-| `api_search` | Search the scraped script API (8,972 classes on 1.8: 887 Enfusion + 8,085 Arma), with inherited members and `format: 'tree'` for an inheritance view |
+| `api_search` | Search the scraped script API (9,107 classes on 1.9: 951 Enfusion + 8,156 Arma), with inherited members and `format: 'tree'` for an inheritance view |
 | `component_search` | Search ScriptComponent descendants by category and event handler |
 | `wiki_search` / `wiki_read` | Search and read the bundled wiki corpus (274 pages) |
 | `wb_knowledge` | Search the bundled modding knowledge base (offline despite the `wb_` prefix) |
@@ -89,7 +89,7 @@ npm run build
 It reads the Doxygen docs the Tools ship under `Workbench/docs/`. Up to 1.7 those were zips; **1.8
 ships them unpacked** (`ArmaReforgerScriptAPIPublic/html/`, `EnfusionScriptAPI/html/`) and the
 scraper accepts both. Check the closing `Scrape complete:` counts: a scrape that finds no docs warns
-and leaves the old index in place. Last scraped: Tools buildid 24870687 (1.8.0.13), 2026-10-03.
+and leaves the old index in place. Last scraped: Tools buildid 26257418 (1.9), 2026-11-10.
 
 ## Development
 
