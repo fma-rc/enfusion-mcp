@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import {
   parseAgrToStruct, parseAgfToStruct, parseAstToStruct,
   parseAsiToStruct, parseAwToStruct,
@@ -14,10 +14,11 @@ import { generateSuggestions, formatSuggestions } from "../../src/animation/sugg
 const BASE = "C:/Users/user/Documents/My Games/ArmaReforgerWorkbench/profile/TESTANIM";
 
 function readFile(name: string): string {
-  return readFileSync(`${BASE}/${name}`, "utf-8");
+  return existsSync(BASE) ? readFileSync(`${BASE}/${name}`, "utf-8") : "";
 }
 
-describe("M151A2 Integration", () => {
+// Needs a local Workbench TESTANIM fixture; skipped where it is absent.
+describe.skipIf(!existsSync(BASE))("M151A2 Integration", () => {
   const agrContent = readFile("M151A2.agr");
   const agfContent = readFile("M151A2.agf");
   const astContent = readFile("M151A2.ast");

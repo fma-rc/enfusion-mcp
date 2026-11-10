@@ -79,7 +79,7 @@
 
 ## Features
 
-### 2.1 Config Validation (#9 from UPGRADE_IDEAS.md)
+### 2.1 Config Validation (#9 from docs/UPGRADE_IDEAS.md)
 
 **Goal:** Extend `mod_validate` to semantically check `.conf` files beyond parse verification.
 
@@ -97,7 +97,7 @@
 
 **Effort:** S
 
-### 2.2 Fuzzy Search (#12 from UPGRADE_IDEAS.md)
+### 2.2 Fuzzy Search (#12 from docs/UPGRADE_IDEAS.md)
 
 **Goal:** Add typo-tolerant search so queries like `"ScriptCompnent"` or `"GetPositon"` find results.
 
@@ -119,7 +119,7 @@
 
 **Effort:** M
 
-### 2.3 Auto-Fetch Parent Methods (#14 from UPGRADE_IDEAS.md)
+### 2.3 Auto-Fetch Parent Methods (#14 from docs/UPGRADE_IDEAS.md)
 
 **Goal:** `script_create` should pull real overridable methods from the API index instead of relying on hardcoded method lists.
 
@@ -170,5 +170,5 @@ All 7 streams are independent and can run in parallel.
 
 - Version bump to 0.7.0
 - Update README tools table if tool descriptions change
-- Update UPGRADE_IDEAS.md to mark #9, #12, #14 as done
+- Update docs/UPGRADE_IDEAS.md to mark #9, #12, #14 as done
 - Update TODO.md to remove fixed bugs

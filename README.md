@@ -9,7 +9,7 @@ MCP server for Arma Reforger modding: API and wiki search, base-game asset readi
 This fork is not on npm. `npx -y enfusion-mcp` installs **upstream**, not this code.
 
 ```bash
-git clone https://github.com/fmarcac/enfusion-mcp.git && cd enfusion-mcp
+git clone https://github.com/fma-rc/enfusion-mcp.git && cd enfusion-mcp
 npm install && npm run build
 claude mcp add --scope user enfusion-mcp \
   -e ENFUSION_WORKBENCH_PATH="$HOME/.local/share/Steam/steamapps/common/Arma Reforger Tools" \
@@ -94,7 +94,7 @@ and leaves the old index in place. Last scraped: Tools buildid 24870687 (1.8.0.1
 ## Development
 
 ```bash
-npm test   # 446 tests; 2 known failures, see CHANGELOG
+npm test   # 627 tests (12 skip without a local Workbench animation fixture)
 ```
 
 Requires Node 20+.
