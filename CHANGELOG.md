@@ -1,80 +1,61 @@
 # Changelog
 
-Fork of [steffenbk/enfusion-mcp-BK](https://github.com/steffenbk/enfusion-mcp-BK)
-(itself a fork of Articulated7/enfusion-mcp). Versioning: [SemVer](https://semver.org/).
+All notable changes to this fork. Format follows [Keep a Changelog](https://keepachangelog.com/),
+versions follow [SemVer](https://semver.org/). Fork of
+[steffenbk/enfusion-mcp-BK](https://github.com/steffenbk/enfusion-mcp-BK), itself a fork of
+[Articulated7/enfusion-mcp](https://github.com/Articulated7/enfusion-mcp).
 
-## [1.1.0]
+## [1.1.0] - 2026-11-11
 
-Merged upstream enfusion-mcp-BK through 0acfa88 (v0.12.0 + 37 later commits).
-
-### Added
-- UI layout engine rewrite, plus UI recipe and game mode recipe systems (`layout_recipe`,
-  `gamemode_scaffold`, `menu_create`).
-- `wb_read_props` tool and `EMCP_WB_ReadProps` handler (engine-side resolved properties).
-- Vehicle engine tuning server (`npm run tuning-server`).
-- Scenario relay towers and a low-population seeding mode; prefab component-dependency warnings.
-- Bulk Workbench handler cleanup and `listInstalledHandlerMods()`.
-
-### Fixed (from upstream)
-- Pak reader: entries read at their absolute offset, zlib (not raw deflate) decompression,
-  clear message for unsupported compression.
-- enfusion-text parser: numeric tuples (`coords 0 0 0`) no longer truncated, and a bare
-  key/value pair followed by a quoted key no longer replays a token.
-- Workbench in-band handler errors are thrown instead of reported as success; a handler class
-  that is new since Workbench started now gives an explanatory error.
-- Windows path hazards closed, KB output capped, project reads and building writes guarded.
-- `gamePath` derivation accepts `ENFUSION_WORKBENCH_PATH` pointing at either the Tools root or
-  its `Workbench` subdirectory. Combined with the fork's rule that an explicit `gamePath` in a
-  config file is never overwritten.
-
-### Kept from the fork
-- Linux/Proton launcher and kill logic, the 1.8 API index and scraper, package metadata.
-  `findWorkbenchExe` now comes from `utils/game-paths` (upstream's move); the Linux launcher
-  code in `workbench/client.ts` is unchanged.
-- `tests/animation/integration-m151a2.test.ts` still needs a local Windows sample directory
-  and fails to load without it (unchanged since the vendoring).
-
-## [Unreleased]
-
-
-### Changed
-- **Reforger 1.8 API index re-scraped** (Tools buildid 24870687, 1.8.0.13): 887 Enfusion +
-  8,085 Arma classes, was 812 + 8,009 on 1.7. The scraper now reads the docs as either a zip
-  (up to 1.7) or an unpacked directory (1.8 ships `ArmaReforgerScriptAPIPublic/html/` and
-  `EnfusionScriptAPI/html/` loose, the latter without "Public"). The zip-only reader found
-  nothing on 1.8 and kept the 1.7 index without failing.
-- README rewritten for this fork: install from source (npx installs upstream), tool table
-  matching the registered tools, how to refresh the index. `docs/LINUX_PROTON.md` gained the
-  four direct-Proton launch traps and lost the retired-laptop narrative.
-
-## [1.0.0-ff]
+First release on npm, as `@fma-rc/enfusion-mcp`. The unscoped `enfusion-mcp` package is upstream.
 
 ### Added
-- **Linux / Proton Workbench launcher.** The Windows Workbench `.exe` can now be
-  launched on Linux. New `launcher` config (`auto` | `native` | `proton` | `steam`,
-  default `auto` → Proton on Linux). Auto-detects the Proton install, Steam root,
-  and the Tools `compatdata` prefix; runs the exe via `proton run` with the Steam
-  compat env, or via `steam -applaunch <appid>`. New env vars:
-  `ENFUSION_WB_LAUNCHER`, `ENFUSION_PROTON_PATH`, `ENFUSION_STEAM_ROOT`,
-  `ENFUSION_STEAM_COMPAT_DATA_PATH`, `ENFUSION_STEAM_APPID`.
+- From upstream enfusion-mcp-BK (merged through v0.12.0 plus 37 later commits):
+  - `layout_recipe`: UI layouts from blueprints extracted from real game HUDs, on a rewritten
+    layout engine.
+  - `menu_create`: a complete custom menu (class, `ChimeraMenuPreset` entry, layout, input-context
+    guards).
+  - `gamemode_scaffold`: a modded Conflict game mode composed from feature recipes.
+  - `wb_read_props`: engine-resolved prefab and config properties through the Workbench.
+  - Vehicle engine tuning UI (`npm run tuning-server`).
+  - Scenario relay towers, a low-population seeding mode, and prefab component-dependency warnings.
 
 ### Changed
-- **Reforger 1.7 API index re-scraped** from the 1.7 Tools docs. The scraper is now
-  layout-agnostic (matches doc pages by basename) because 1.7 nests the Doxygen
-  pages under `…/html/` *and* merges the Enfusion + Arma APIs into the single
-  `ArmaReforgerScriptAPIPublic.zip`  -  the old fixed-prefix lookup found nothing.
-- MCP version is now read from `package.json` (was hardcoded and stale).
+- API index re-scraped for **Arma Reforger 1.9** (Tools buildid 26257418): 951 Enfusion + 8,156
+  Arma classes.
+- The scraper reads the Tools' Doxygen docs either zipped (up to 1.7) or unpacked (1.8 and later).
+  The zip-only reader found nothing on 1.8 and silently kept the old index.
+- README rewritten for npm installs; finished design and plan documents removed.
 
 ### Fixed
-- `gamePath` auto-derive no longer clobbers an explicit `gamePath` from a config
-  file/env (it only derives when still at the default). This previously sent
-  `asset_search`/`game_read` to the wrong directory.
-- Updated stale `requireEditMode`/`requirePlayMode` tests to match the intended
-  block-on-unknown-mode behavior.
+- `.pak` reader: entries are read at their absolute offset and decompressed as zlib, and
+  unsupported compression gives a clear error.
+- `.et`/`.conf` text parser: numeric tuples such as `coords 0 0 0` are no longer truncated, and a
+  bare key/value pair before a quoted key no longer repeats a token.
+- Workbench handler errors are raised instead of being reported as success, and a handler class
+  added after Workbench started gives an explanatory error.
+- `ENFUSION_WORKBENCH_PATH` may point at the Tools root or its `Workbench` subdirectory.
+- Windows path handling, knowledge-base output size, project reads and building writes hardened.
+- The animation integration test skips cleanly when its local game-asset fixture is absent.
 
-### Known pre-existing issues (inherited from the fork, not yet fixed)
-- `tests/formats/enfusion-text.test.ts` "serializes minimal node": the node-ID
-  quoting heuristic emits some IDs bare; the real mod-scaffold path uses the
-  `generateGproj` template, so this doesn't affect generated `.gproj` files.
-- `tests/animation/integration-m151a2.test.ts`: integration test requiring
-  game-asset fixtures not present in the repo.
+## [1.0.0] - 2026-06-05
+
+Not published to npm. Based on enfusion-mcp-BK v0.10.0.
+
+### Added
+- **Workbench launcher for Linux / Proton.** The Windows Workbench runs on Linux through `proton run`
+  with the Steam compat environment, or through `steam -applaunch`. New `launcher` setting
+  (`auto` | `native` | `proton` | `steam`, default `auto`, which picks Proton on Linux), with the
+  Proton install, Steam root and Tools prefix detected automatically. New variables:
+  `ENFUSION_WB_LAUNCHER`, `ENFUSION_PROTON_PATH`, `ENFUSION_STEAM_ROOT`,
+  `ENFUSION_STEAM_COMPAT_DATA_PATH`, `ENFUSION_STEAM_APPID`.
+- Opening and switching projects on Linux, and killing the whole Proton launch chain on exit.
+
+### Changed
+- API index re-scraped for Arma Reforger 1.7. The scraper matches doc pages by file name, since 1.7
+  nests them under `html/` and merges the Enfusion and Arma APIs into one archive.
+- The server version is read from `package.json`.
+
+### Fixed
+- An explicit `gamePath` from the config file or environment is no longer overwritten by the
+  derived default, which sent `asset_search` and `game_read` to the wrong directory.
