@@ -5,6 +5,16 @@ versions follow [SemVer](https://semver.org/). Fork of
 [steffenbk/enfusion-mcp-BK](https://github.com/steffenbk/enfusion-mcp-BK), itself a fork of
 [Articulated7/enfusion-mcp](https://github.com/Articulated7/enfusion-mcp).
 
+## [1.1.1] - 2026-11-11
+
+### Fixed
+- The `enfusion-mcp` command was missing from 1.1.0: npm 12 dropped the `./`-prefixed `bin` path at
+  publish, so `npx -y @fma-rc/enfusion-mcp` had nothing to run.
+
+### Changed
+- README install section: npm package link, Claude Code and JSON client configs, Windows and Linux
+  paths, how to update.
+
 ## [1.1.0] - 2026-11-11
 
 First release on npm, as `@fma-rc/enfusion-mcp`. The unscoped `enfusion-mcp` package is upstream.

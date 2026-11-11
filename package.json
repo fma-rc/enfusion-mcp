@@ -1,10 +1,10 @@
 {
   "name": "@fma-rc/enfusion-mcp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "type": "module",
   "description": "MCP server for Arma Reforger / Enfusion modding: script API and wiki search, base-game .pak reading, project scaffolding. Linux/Proton friendly fork.",
   "bin": {
-    "enfusion-mcp": "./dist/index.js"
+    "enfusion-mcp": "dist/index.js"
   },
   "scripts": {
     "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",

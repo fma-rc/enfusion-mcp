@@ -8,17 +8,61 @@ conventions. Targets **Arma Reforger 1.9**, including **Linux with the Tools und
 
 ## Install
 
+Published on npm as **[`@fma-rc/enfusion-mcp`](https://www.npmjs.com/package/@fma-rc/enfusion-mcp)**.
+You need Node.js 20+ and, for anything that reads game files, Arma Reforger Tools from Steam. There is
+nothing to install by hand: `npx` downloads and runs the package when the MCP client starts it.
+
+> The unscoped `enfusion-mcp` package on npm is the original upstream project, not this fork. Always
+> use the `@fma-rc/` name.
+
+### Claude Code
+
 ```bash
 claude mcp add --scope user enfusion-mcp \
-  -e ENFUSION_WORKBENCH_PATH="$HOME/.local/share/Steam/steamapps/common/Arma Reforger Tools" \
-  -e ENFUSION_PROJECT_PATH=/path/to/your/mods \
+  -e ENFUSION_WORKBENCH_PATH="<path to Arma Reforger Tools>" \
+  -e ENFUSION_PROJECT_PATH="<folder holding your mods>" \
   -- npx -y @fma-rc/enfusion-mcp
 ```
 
-Any MCP client works the same way: run `npx -y @fma-rc/enfusion-mcp` over stdio. The unscoped
-`enfusion-mcp` package on npm is the original upstream project, not this one.
+### Claude Desktop, Cursor and other MCP clients
 
-From source:
+Add this to the client's MCP config (for Claude Desktop, `claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "enfusion-mcp": {
+      "command": "npx",
+      "args": ["-y", "@fma-rc/enfusion-mcp"],
+      "env": {
+        "ENFUSION_WORKBENCH_PATH": "<path to Arma Reforger Tools>",
+        "ENFUSION_PROJECT_PATH": "<folder holding your mods>"
+      }
+    }
+  }
+}
+```
+
+### Paths
+
+| | Arma Reforger Tools (`ENFUSION_WORKBENCH_PATH`) |
+|---|---|
+| Windows | `C:\Program Files (x86)\Steam\steamapps\common\Arma Reforger Tools` |
+| Linux | `~/.local/share/Steam/steamapps/common/Arma Reforger Tools` |
+
+`ENFUSION_PROJECT_PATH` defaults to the Workbench addons folder
+(`Documents/My Games/ArmaReforgerWorkbench/addons`). Both are optional; every setting is listed
+under [Configuration](#configuration).
+
+Restart the client, then ask it something like "search the Enfusion API for SCR_InventoryStorageManagerComponent"
+to check the server is connected.
+
+### Updating
+
+`npx -y` reuses its cached copy. To pick up a new release, use `npx -y @fma-rc/enfusion-mcp@latest` in
+the command, or clear the cache with `npm cache clean --force`.
+
+### From source
 
 ```bash
 git clone https://github.com/fma-rc/enfusion-mcp.git && cd enfusion-mcp
@@ -26,7 +70,7 @@ npm install && npm run build
 claude mcp add --scope user enfusion-mcp -- node "$PWD/dist/index.js"
 ```
 
-The server runs `dist/`, so rebuild (`npm run build`) and reload the client after every source change.
+The server runs `dist/`, so rebuild (`npm run build`) and restart the client after every source change.
 
 ## Tools
 
