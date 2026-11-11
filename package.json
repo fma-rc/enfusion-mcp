@@ -1,8 +1,8 @@
 {
-  "name": "enfusion-mcp",
-  "version": "1.1.0-ff",
+  "name": "@fma-rc/enfusion-mcp",
+  "version": "1.1.0",
   "type": "module",
-  "description": "MCP server for Arma Reforger / Enfusion engine modding  -  create mods from natural language",
+  "description": "MCP server for Arma Reforger / Enfusion modding: script API and wiki search, base-game .pak reading, project scaffolding. Linux/Proton friendly fork.",
   "bin": {
     "enfusion-mcp": "./dist/index.js"
   },
@@ -44,9 +44,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/steffenbk/enfusion-mcp-BK.git"
+    "url": "git+https://github.com/fma-rc/enfusion-mcp.git"
   },
-  "homepage": "https://github.com/steffenbk/enfusion-mcp-BK",
+  "homepage": "https://github.com/fma-rc/enfusion-mcp#readme",
   "license": "MIT",
   "keywords": [
     "mcp",
@@ -54,6 +54,14 @@
     "enfusion",
     "modding",
     "model-context-protocol",
-    "workbench"
-  ]
+    "workbench",
+    "linux",
+    "proton"
+  ],
+  "bugs": {
+    "url": "https://github.com/fma-rc/enfusion-mcp/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }

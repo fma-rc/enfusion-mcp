@@ -1,9 +1,9 @@
 # Changelog
 
-Maintained private fork of [steffenbk/enfusion-mcp-BK](https://github.com/steffenbk/enfusion-mcp-BK)
+Fork of [steffenbk/enfusion-mcp-BK](https://github.com/steffenbk/enfusion-mcp-BK)
 (itself a fork of Articulated7/enfusion-mcp). Versioning: [SemVer](https://semver.org/).
 
-## [1.1.0-ff]
+## [1.1.0]
 
 Merged upstream enfusion-mcp-BK through 0acfa88 (v0.12.0 + 37 later commits).
 
